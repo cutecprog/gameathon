@@ -1,0 +1,24 @@
+Drill simulation. Mechanics are controlling gas pedal, brake pedal, clutch and
+gear shift. Set analog values for brake and gas by binary search with two
+buttons. Start at 1/2 if one key press left then 1/4 else if one key press
+right then 3/4: LL 1/8, LR 3/8, RL 5/8, RR 7/8, LLL 1/16, etc. Gas pedal has a
+continuous random or complex varying by a factor of 1/8. Brake pedal is exact.
+Hold [shift] to disenage the clutch and release to enage it. For gear change to
+suceed, gas pedal must be between ideal ranges for the 1/8 of a second it takes
+the clutch to enage. Their is some tolarance to this but the clutch will take
+some damage; ideal range, and to a lesser degree tolarance, get smaller as the
+clutch approaches enagement.
+
+▏ ▎ ▍ ▌ ▋ ▊  ▉  █ ▇ ▆ ▅ ▄ ▃ ▂ ▁
+
+
+
+
+▉
+▉
+
+
+
+
+
+
