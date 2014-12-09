@@ -32,7 +32,7 @@ def gaussed(size, sigma, value):
 
         """
         from random import gauss
-        return sorted([0, int(gauss(value, sigma-1)), size])[1]
+        return sorted([0, int(gauss(value, sigma)), size-1])[1]
 
 if __name__=='__main__':
         main() 
