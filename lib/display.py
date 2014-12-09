@@ -27,3 +27,11 @@ def gaussed(size, sigma, value):
         """
         from random import gauss
         return sorted([0, int(gauss(value, sigma)), size-1])[1]
+
+class graphic_var(object):
+        def __init__(self, pos, size, sigma):
+                self.y     = pos[0]
+                self.x     = pos[1]
+                self.size  = size
+                self.sigma = sigma
+                self.value = 0
