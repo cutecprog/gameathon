@@ -1,5 +1,5 @@
 """Hold generic shell display code in this file"""
-def hbar(length):
+def hbar(value):
         """Return horizontal_bar the size of length in 1/8 of a column
 
         """
