@@ -1,6 +1,6 @@
 """Hold generic shell display code in this file"""
 def hbar(value):
-        """Return horizontal_bar the size of length in 1/8 of a column
+        """Return horizontal bar the size of value in 1/8 of columns
 
         """
         bar =  '\xe2\x96\x88'*(length/8)
