@@ -6,7 +6,7 @@ def horizontal_bar(length):
         """Return horizontal_bar the size of length in 1/8 of a column.
 
         """
-        bar =  '_'*(length/8)
+        bar =  '\xe2\x96\x88'*(length/8)
         if length%8:
                 bar += ','
         return bar
