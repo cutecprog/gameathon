@@ -13,13 +13,12 @@ def loc(y,x):
         """
         return '\033[%s;%sH' % (str(y),str(x))
 
-def meter(pos, size, value):
+def meter(size, value):
         """Return printable visual representation of value
 
         """
         display  = horizontal_bar(value)
         display += ' '*(size - len(display)/3)
-        display  = loc(pos[0], pos[1]) + display
         return display
 
 def gaussed(size, sigma, value):
