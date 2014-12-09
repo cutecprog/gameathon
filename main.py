@@ -6,6 +6,9 @@ def main():
                 print loc(1,80) + meter(hbar, 32, gaussed(256, 4, (i/3)*12))
                 sleep(.083)
         wind_speed = GraphicVar((20, 80), 512, 4)
+        print wind_speed.get()
+        wind_speed.set(9)
+        print wind_speed.get()
 
 if __name__=='__main__':
         main() 
