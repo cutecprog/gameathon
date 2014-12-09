@@ -1,7 +1,7 @@
 def main():
         from time import sleep
         for i in range(0,256):
-                print loc(1, 80)+horizontal_bar(i)
+                print meter((1,80), 32, i)
                 sleep(.01)
 
 def horizontal_bar(length):
@@ -22,7 +22,10 @@ def meter(pos, size, value):
         """Return printable visual representation of value
 
         """
-        return ""
+        display  = horizontal_bar(value)
+        display += ' '*(size - len(display)/3)
+        display  = loc(pos[0], pos[1]) + display
+        return display
 
 if __name__=='__main__':
         main() 
