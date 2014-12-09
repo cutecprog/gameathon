@@ -7,8 +7,7 @@ def horizontal_bar(length):
 
         """
         bar =  '\xe2\x96\x88'*(length/8)
-        if length%8:
-                bar += ','
+        bar += '\xe2\x96' + chr(0x8f - length%8)
         return bar
 
 if __name__=='__main__':
