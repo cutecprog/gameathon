@@ -3,8 +3,8 @@ def hbar(value):
         """Return horizontal bar the size of value in 1/8 of columns
 
         """
-        bar =  '\xe2\x96\x88'*(length/8)
-        bar += '\xe2\x96' + chr(0x8f - length%8)
+        bar =  '\xe2\x96\x88'*(value/8)
+        bar += '\xe2\x96' + chr(0x8f - value%8)
         return bar
 
 def loc(y,x):
