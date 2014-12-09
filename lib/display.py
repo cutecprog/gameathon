@@ -1,5 +1,5 @@
 """Hold generic shell display code in this file"""
-def horizontal_bar(length):
+def hbar(length):
         """Return horizontal_bar the size of length in 1/8 of a column
 
         """
@@ -13,11 +13,11 @@ def loc(y,x):
         """
         return '\033[%s;%sH' % (str(y),str(x))
 
-def meter(size, value):
+def meter(illustrator, size, value):
         """Return printable visual representation of value
 
         """
-        display  = horizontal_bar(value)
+        display  = illustrator(value)
         display += ' '*(size - len(display)/3)
         return display
 
