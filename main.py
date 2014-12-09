@@ -1,8 +1,7 @@
 def main():
         from time import sleep
-        from random import gauss
         for i in range(0,64):
-                print meter((1,80), 32, sorted([0,int(gauss(128,16)),256])[1])
+                print meter((1,80), 32, gaussed(256, 4, (i/3)*12))
                 sleep(.083)
 
 def horizontal_bar(length):
@@ -27,6 +26,13 @@ def meter(pos, size, value):
         display += ' '*(size - len(display)/3)
         display  = loc(pos[0], pos[1]) + display
         return display
+
+def gaussed(size, sigma, value):
+        """Deviate value with random.gauss function.
+
+        """
+        from random import gauss
+        return sorted([0, int(gauss(value, sigma-1)), size])[1]
 
 if __name__=='__main__':
         main() 
