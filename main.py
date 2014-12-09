@@ -1,6 +1,8 @@
 def main():
-        for i in range(0,17):
-                print horizontal_bar(i)
+        from time import sleep
+        for i in range(0,256):
+                print '\033[1;80H'+horizontal_bar(i)
+                sleep(.01)
 
 def horizontal_bar(length):
         """Return horizontal_bar the size of length in 1/8 of a column.
