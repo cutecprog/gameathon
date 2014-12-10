@@ -53,5 +53,7 @@ def display_loop(var):
         t.daemon = True
         t.start()
 def _display_loop(var):
+        from time import sleep
         while True:
                 print var
+                sleep(.083)
