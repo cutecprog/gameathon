@@ -29,13 +29,20 @@ def gaussed(size, sigma, value):
         return sorted([0, int(gauss(value, sigma)), size-1])[1]
 
 class GraphicVar(object):
-        def __init__(self, pos, size, sigma, illustrate):
+        def __init__(self, pos, illustrate, size, sigma):
                 self.y     = pos[0]
                 self.x     = pos[1]
                 self.size  = size
                 self.sigma = sigma
                 self.value = 0
                 self.illustrate = illustrate
+        def __repr__(self):
+                """Return value with style at y,x
+
+                """
+                return loc(self.y, self.x) + meter(self.illustrate, self.size,\
+                                                gaussed(self.size*8,          \
+                                                self.sigma, self.value)) 
         def get(self):
                 return self.value
         def set(self, value):
