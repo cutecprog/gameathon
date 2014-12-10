@@ -42,8 +42,4 @@ class GraphicVar(object):
                 """
                 return loc(self.y, self.x) + meter(self.illustrate, self.size,\
                                                 gaussed(self.size*8,          \
-                                                self.sigma, self.value)) 
-        def get(self):
-                return self.value
-        def set(self, value):
-                self.value = value
+                                                self.sigma, self.value))
