@@ -29,21 +29,14 @@ def gaussed(size, sigma, value):
         return sorted([0, int(gauss(value, sigma)), size-1])[1]
 
 class GraphicVar(object):
-        def __init__(self, pos, size, sigma):
+        def __init__(self, pos, size, sigma, illustrate):
                 self.y     = pos[0]
                 self.x     = pos[1]
                 self.size  = size
                 self.sigma = sigma
                 self.value = 0
+                self.illustrate = illustrate
         def get(self):
                 return self.value
         def set(self, value):
                 self.value = value
-
-def display_loop(var):
-        from threading import Thread
-        Thread(target=_display_loop, args=vars).start()
-def _display_loop(var):
-        from sys import stdout
-        while True:
-                stdout.write(var)
