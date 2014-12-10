@@ -13,11 +13,11 @@ def loc(y,x):
         """
         return '\033[%s;%sH' % (str(y),str(x))
 
-def meter(illustrator, size, value):
+def meter(illustrate, size, value):
         """Return printable visual representation of value
 
         """
-        display  = illustrator(value)
+        display  = illustrate(value)
         display += ' '*(size - len(display)/3)
         return display
 
@@ -39,3 +39,11 @@ class GraphicVar(object):
                 return self.value
         def set(self, value):
                 self.value = value
+
+def display_loop(var):
+        from threading import Thread
+        Thread(target=_display_loop, args=vars).start()
+def _display_loop(var):
+        from sys import stdout
+        while True:
+                stdout.write(var)
