@@ -22,7 +22,7 @@ def meter(illustrate, size, value):
         return display
 
 def gaussed(size, sigma, value):
-        """Deviate value with random.gauss function.
+        """Deviate value with random.gauss function limit between 0 and size-1
 
         """
         from random import gauss
