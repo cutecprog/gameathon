@@ -1,4 +1,5 @@
 """Hold generic shell display code in this file"""
+
 def hbar(value):
         """Return horizontal bar the size of value in 1/8 of columns
 

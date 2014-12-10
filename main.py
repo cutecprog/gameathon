@@ -1,3 +1,5 @@
+"""Hold game code in this file"""
+
 from lib.display import hbar, GraphicVar
 
 def main():
