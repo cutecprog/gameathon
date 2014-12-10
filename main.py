@@ -1,4 +1,4 @@
-from lib.display import hbar, GraphicVar
+from lib.display import hbar, GraphicVar, display_loop
 
 def main():
         from time import sleep
@@ -7,6 +7,8 @@ def main():
                 wind_speed.value = (i/3)*12
                 print wind_speed
                 sleep(.083)
+        display_loop(wind_speed)
+        sleep(1)
 
 if __name__=='__main__':
         main() 

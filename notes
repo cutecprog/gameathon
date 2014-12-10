@@ -11,7 +11,7 @@ clutch approaches enagement.
 
 def display_loop(var):
         from threading import Thread
-        Thread(target=_display_loop, args=vars).start()
+        Thread(target=_display_loop, args=var).start()
 def _display_loop(var):
         from sys import stdout
         while True:

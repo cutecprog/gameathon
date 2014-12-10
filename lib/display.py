@@ -43,3 +43,15 @@ class GraphicVar(object):
                 return loc(self.y, self.x) + meter(self.illustrate, self.size,\
                                                 gaussed(self.size*8,          \
                                                 self.sigma, self.value))
+
+def display_loop(var):
+        """Take a variable and print it continuously until program ends.
+
+        """
+        from threading import Thread
+        t = Thread(target=_display_loop, args=[var])
+        t.daemon = True
+        t.start()
+def _display_loop(var):
+        while True:
+                print var
