@@ -5,7 +5,7 @@ from lib.display import hbar, GraphicVar
 def main():
         from time import sleep
         wind_speed = GraphicVar((1, 80), hbar,  32, 4)
-        wind_speed.display_loop()
+        wind_speed.display_thread.start()
         for i in range(0,256):
                 wind_speed.value = i
                 sleep(.04)
