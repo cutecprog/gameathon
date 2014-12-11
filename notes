@@ -9,10 +9,16 @@ the clutch to enage. Their is some tolarance to this but the clutch will take
 some damage; ideal range, and to a lesser degree tolarance, get smaller as the
 clutch approaches enagement.
 
-def display_loop(var):
-        from threading import Thread
-        Thread(target=_display_loop, args=var).start()
-def _display_loop(var):
-        from sys import stdout
-        while True:
-                stdout.write(var)
+class KeyPress(object):
+        def __init__(self):
+                self.history = []
+                self.read = True
+        def loop(self):
+                Thread thingy
+        def _loop(self):
+                while True:
+                        ch = read(fd, 4)
+
+key_press = KeyPress()
+key_press.add_event('\033', pause)
+key_press.add_event('([a-z]|[A-z])*', insert)
