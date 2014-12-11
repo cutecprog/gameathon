@@ -57,3 +57,7 @@ class GraphicVar(object):
                         print self
                         sleep(.083)
                 print loc(self.y, self.x) + ' '*self.size
+        def show(self):
+                self.display_thread.start()
+        def hide(self):
+                self.displaying = False
