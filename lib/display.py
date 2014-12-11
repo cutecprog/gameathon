@@ -37,6 +37,9 @@ class GraphicVar(object):
                 self.sigma = sigma
                 self.value = 0
                 self.illustrate = illustrate
+                from threading import Thread
+                self.display_thread = Thread(target=self._display_loop)
+                self.display_thread.daemon = True
         def __repr__(self):
                 """Return value with style at y,x
 
@@ -48,10 +51,7 @@ class GraphicVar(object):
                 """Print self continuously until program ends.
 
                 """
-                from threading import Thread
-                t = Thread(target=self._display_loop)
-                t.daemon = True
-                t.start()
+                self.display_thread.start()
         def _display_loop(self):
                 from time import sleep
                 while True:
