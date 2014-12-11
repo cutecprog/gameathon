@@ -39,7 +39,7 @@ class GraphicVar(object):
                 self.illustrate = illustrate
                 from threading import Thread
                 self.display_thread = Thread(target=self._display_loop)
-                self.display_thread.daemon = True
+                self.displaying = False
         def __repr__(self):
                 """Return value with style at y,x
 
@@ -54,6 +54,8 @@ class GraphicVar(object):
                 self.display_thread.start()
         def _display_loop(self):
                 from time import sleep
-                while True:
+                self.displaying = True
+                while self.displaying:
                         print self
                         sleep(.083)
+                print loc(self.y, self.x) + ' '*self.size
