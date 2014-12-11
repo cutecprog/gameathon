@@ -13,12 +13,14 @@ class KeyPress(object):
         def __init__(self):
                 self.history = []
                 self.read = True
-        def loop(self):
+        def listen(self):
                 Thread thingy
+        def unlisten(self):
+                self.listening = False
         def _loop(self):
-                while True:
+                self.listening = True
+                while self.listening:
                         ch = read(fd, 4)
-
 key_press = KeyPress()
 key_press.add_event('\033', pause)
 key_press.add_event('([a-z]|[A-z])*', insert)
