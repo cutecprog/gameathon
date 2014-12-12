@@ -31,15 +31,15 @@ def gaussed(size, sigma, value):
 
 class GraphicVar(object):
         def __init__(self, pos, illustrate, size, sigma):
-                self.y     = pos[0]
-                self.x     = pos[1]
-                self.size  = size
-                self.sigma = sigma
-                self.value = 0
-                self.illustrate = illustrate
                 from threading import Thread
+                self.y              = pos[0]
+                self.x              = pos[1]
+                self.illustrate     = illustrate
+                self.size           = size
+                self.sigma          = sigma
+                self.value          = 0
                 self.display_thread = Thread(target=self.display_loop)
-                self.displaying = False
+                self.displaying     = False
         def __repr__(self):
                 """Return value with style at y,x
 
