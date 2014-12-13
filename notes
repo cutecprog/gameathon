@@ -24,3 +24,15 @@ class KeyPress(object):
 key_press = KeyPress()
 key_press.add_event('\033', pause)
 key_press.add_event('([a-z]|[A-z])*', insert)
+
+1/2 # div 2
+1/4 # div 2
+1/8
+
+1/2 # mul 3/2
+3/4 # mul 7/6
+7/8
+
+1/2
+1/4
+3/8
