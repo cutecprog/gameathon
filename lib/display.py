@@ -18,7 +18,7 @@ def meter(illustrate, size, value):
         """Return printable visual representation of value
 
         """
-        display  = illustrate(value)
+        display  = illustrate(int(value))
         display += ' '*(size - len(display)/3)
         return display
 
