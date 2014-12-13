@@ -61,3 +61,22 @@ class GraphicVar(object):
                 self.display_thread.start()
         def hide(self):
                 self.displaying = False
+        def bs_input(self):
+                """Use arrow keys to set value with a binary search
+
+                """
+                from lib.keyboard import getch, Key
+                start_value = self.value
+                n = start_value
+                ch = ""
+                while ch != '\r':
+                        ch = getch()
+                        if ch == Key.UP_ARROW:
+                                self.value = start_value
+                                n = start_value
+                        elif ch == Key.LEFT_ARROW:
+                                n /= 2
+                                self.value -= n
+                        elif ch == Key.RIGHT_ARROW:
+                                n /= 2
+                                self.value += n

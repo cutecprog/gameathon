@@ -1,7 +1,7 @@
 """Hold game code in this file"""
 
 from lib.display import loc, hbar, GraphicVar
-from lib.keyboard import getch, Key
+from lib.keyboard import getch
 
 def main():
         from random import randint
@@ -13,28 +13,18 @@ def main():
         gauge.value = randint(0,255)
         pedal.show()
         gauge.show()
-        start_value = pedal.value
-        n = start_value
-        ch = ""
-        while ch != '\r':
-                ch = getch()
-                if ch == Key.UP_ARROW:
-                        pedal.value = start_value
-                        n = start_value
-                elif ch == Key.LEFT_ARROW:
-                        n /= 2
-                        pedal.value -= n
-                elif ch == Key.RIGHT_ARROW:
-                        n /= 2
-                        pedal.value += n
-        pedal.hide()
-        gauge.hide()
+        pedal.bs_input()
+        gauge.sigma = 0
         if pedal.value == gauge.value:
                 print 'You win'
+                pedal.hide()
+                gauge.hide()
                 return
         else:
-                print 'You loss by', gauge.value - pedal.value
+                print 'You loss by', pedal.value - gauge.value
         getch()
+        pedal.hide()
+        gauge.hide()
         main()
 
 if __name__=='__main__':
