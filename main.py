@@ -10,6 +10,11 @@ def main():
         pedal.show()
         while ch != '\033':
                 ch = getch()
+                if ch[:2] == '\033[':
+                        if ch[2] == 'D':
+                                pedal.value -= pedal.value/2
+                        elif ch[2] == 'C':
+                                pedal.value += pedal.value/2
                 msg = loc(5,80)
                 print msg + ' '*8
                 for c in ch:
