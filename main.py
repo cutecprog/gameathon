@@ -1,6 +1,7 @@
 """Hold game code in this file"""
 
 from lib.display import hbar, GraphicVar, meter, loc
+from lib.keyboard import getch
 
 def main():
         from time import sleep
@@ -13,7 +14,7 @@ def main():
                 pressure_valve2.value = i
                 print loc(3,80) + str((i/8)*8) + ' + ' + meter(hbar,1,i%8,)
                 sleep(.04)
-        raw_input()
+        print getch()
         print loc(3,80) + "       "
         pressure_valve.hide()
         pressure_valve2.hide()
