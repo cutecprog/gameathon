@@ -4,14 +4,15 @@ def getch():
         """Get one to four characters press at once and return them
 
         """
-        import tty, termios
-        from os import read
         from sys import stdin
+        from termios import tcgetattr, tcsetattr, TCSADRAIN
+        from tty import setraw
+        from os import read
         fd = stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
+        old_settings = tcgetattr(fd)
         try:
-                tty.setraw(fd)
+                setraw(fd)
                 ch = read(fd, 4)
         finally:
-                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+                tcsetattr(fd, TCSADRAIN, old_settings)
         return ch
