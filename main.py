@@ -7,8 +7,7 @@ def main():
         from random import randint
         from os import system
         system('clear')
-        ch = ""
-        pedal = GraphicVar((2,80), hbar, 32, 0)
+        pedal = GraphicVar((2,80), hbar, 32)
         gauge = GraphicVar((1,80), hbar, 32, 4)
         pedal.value = 128
         gauge.value = randint(0,255)
@@ -16,6 +15,7 @@ def main():
         gauge.show()
         start_value = pedal.value
         n = start_value
+        ch = ""
         while ch != '\r':
                 ch = getch()
                 if ch[:2] == '\033[':

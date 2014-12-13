@@ -30,7 +30,7 @@ def gaussed(size, sigma, value):
         return sorted([0, int(gauss(value, sigma)), size-1])[1]
 
 class GraphicVar(object):
-        def __init__(self, pos, illustrate, size, sigma):
+        def __init__(self, pos, illustrate, size, sigma = 0):
                 from threading import Thread
                 self.y              = pos[0]
                 self.x              = pos[1]
