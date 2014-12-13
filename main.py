@@ -1,7 +1,7 @@
 """Hold game code in this file"""
 
 from lib.display import loc, hbar, GraphicVar
-from lib.keyboard import getch
+from lib.keyboard import getch, Key
 
 def main():
         from random import randint
@@ -18,16 +18,15 @@ def main():
         ch = ""
         while ch != '\r':
                 ch = getch()
-                if ch[:2] == '\033[':
-                        if ch[2] == 'D':   # Left Arrow
-                                n /= 2
-                                pedal.value -= n
-                        elif ch[2] == 'C': # Right Arrow
-                                n /= 2
-                                pedal.value += n
-                        elif ch[2] == 'A': # Up Arrow
-                                pedal.value = start_value
-                                n = start_value
+                if ch == Key.UP_ARROW:
+                        pedal.value = start_value
+                        n = start_value
+                elif ch == Key.LEFT_ARROW:
+                        n /= 2
+                        pedal.value -= n
+                elif ch == Key.RIGHT_ARROW:
+                        n /= 2
+                        pedal.value += n
         pedal.hide()
         gauge.hide()
         if pedal.value == gauge.value:

@@ -16,3 +16,10 @@ def getch():
         finally:
                 tcsetattr(fd, TCSADRAIN, old_settings)
         return ch
+
+class Key:
+        UP_ARROW = '\033[A'
+        DOWN_ARROW = '\033[B'
+        RIGHT_ARROW = '\033[C'
+        LEFT_ARROW = '\033[D'
+        ESC = '\033'
