@@ -6,6 +6,7 @@ from lib.keyboard import getch
 def main():
         from random import randint
         from os import system
+        from time import sleep
         system('setterm -cursor off')
         system('clear')
         score = 0
@@ -24,7 +25,7 @@ def main():
                 loss = (gauge.value - pedal.value)**2
                 score += 16 - loss
                 hp.value -= loss
-                getch()
+                #getch()
                 pedal.hide()
                 gauge.hide()
         hp.hide()
