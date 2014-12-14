@@ -8,9 +8,11 @@ def main():
         from os import system
         system('clear')
         score = 0
-        loss  = 0
-        while loss < 144:
-                print loc(1, 100) + "Score:", score
+        hp = GraphicVar((1,80), hbar, 8)
+        hp.value = 64
+        hp.show()
+        while hp.value > 0:
+                print loc(1, 100) + "Score " + str(score)
                 pedal = GraphicVar((3,80), hbar, 32)
                 gauge = GraphicVar((2,80), hbar, 32, 4)
                 gauge.value = randint(0,255)
@@ -18,13 +20,15 @@ def main():
                 gauge.show()
                 pedal.bs_input()
                 gauge.sigma = 0
-                current_loss = (gauge.value - pedal.value)**2
-                score += 16 - current_loss
-                loss += current_loss
+                loss = (gauge.value - pedal.value)**2
+                score += 16 - loss
+                hp.value -= loss
                 getch()
                 pedal.hide()
                 gauge.hide()
+        hp.hide()
         system('clear')
+        print "Final score:", score
 
 if __name__=='__main__':
         main() 
