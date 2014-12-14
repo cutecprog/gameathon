@@ -5,7 +5,8 @@ def hbar(value):
 
         """
         bar =  '\xe2\x96\x88'*(value/8)
-        bar += '\xe2\x96' + chr(0x8f - value%8)
+        if value%8:
+                bar += '\xe2\x96' + chr(0x90 - value%8)
         return bar
 
 def loc(y,x):
