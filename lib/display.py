@@ -66,6 +66,7 @@ class GraphicVar(object):
 
                 """
                 from lib.keyboard import getch, Key
+                self.value = 128
                 start_value = self.value
                 n = start_value
                 ch = ""

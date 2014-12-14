@@ -9,7 +9,6 @@ def main():
         system('clear')
         pedal = GraphicVar((2,80), hbar, 32)
         gauge = GraphicVar((1,80), hbar, 32, 4)
-        pedal.value = 128
         gauge.value = randint(0,255)
         pedal.show()
         gauge.show()
@@ -17,8 +16,10 @@ def main():
         gauge.sigma = 0
         if pedal.value == gauge.value:
                 print 'You win'
+                getch()
                 pedal.hide()
                 gauge.hide()
+                system('clear')
                 return
         else:
                 print 'You loss by', pedal.value - gauge.value

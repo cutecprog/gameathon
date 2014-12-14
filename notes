@@ -23,4 +23,4 @@ class KeyPress(object):
                         ch = read(fd, 4)
 key_press = KeyPress()
 key_press.add_event('\033', pause)
-key_press.add_event('([a-z]|[A-z])*', insert)
+key_press.add_event('([a-z]|[A-Z])*', insert)
