@@ -6,6 +6,7 @@ from lib.keyboard import getch
 def main():
         from random import randint
         from os import system
+        system('setterm -cursor off')
         system('clear')
         score = 0
         hp = GraphicVar((1,80), hbar, 8)
@@ -28,6 +29,7 @@ def main():
                 gauge.hide()
         hp.hide()
         system('clear')
+        system('setterm -cursor on')
         print "Final score:", score
 
 if __name__=='__main__':
