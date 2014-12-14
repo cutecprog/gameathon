@@ -17,6 +17,7 @@ def main():
         hp.value = 64
         hp.show()
         score = 0
+        print loc(8, 80) + "<- Lower    -> Higher    ^ Reset   [enter] Set value"
         while hp.value > 0:
                 print loc(1, 100) + "Score " + str(score)
                 gauge.value = randint(0,255)
