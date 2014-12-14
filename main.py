@@ -18,7 +18,9 @@ def main():
                 gauge.show()
                 pedal.bs_input()
                 gauge.sigma = 0
-                loss += (gauge.value - pedal.value)**2
+                current_loss = (gauge.value - pedal.value)**2
+                score += 16 - current_loss
+                loss += current_loss
                 getch()
                 pedal.hide()
                 gauge.hide()
