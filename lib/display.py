@@ -59,8 +59,8 @@ class GraphicVar(object):
 
                 """
                 from lib.keyboard import getch, Key
-                self.value = 128
-                start_value = self.value
+                start_value = self.size * 4   # Half full 
+                self.value = start_value
                 n = start_value
                 ch = ""
                 while ch != '\r':
