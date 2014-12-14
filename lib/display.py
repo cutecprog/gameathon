@@ -63,9 +63,9 @@ class GraphicVar(object):
                 self.value = start_value
                 n = start_value
                 ch = ""
-                while ch != Key.DOWN_ARROW:
+                while ch != Key.UP_ARROW:
                         ch = getch()
-                        if ch == Key.UP_ARROW:
+                        if ch == Key.DOWN_ARROW:
                                 self.value = start_value
                                 n = start_value
                         elif ch == Key.LEFT_ARROW:
