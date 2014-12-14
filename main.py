@@ -22,6 +22,7 @@ def main():
                 getch()
                 pedal.hide()
                 gauge.hide()
+        system('clear')
 
 if __name__=='__main__':
         main() 
