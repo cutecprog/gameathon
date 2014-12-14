@@ -9,26 +9,24 @@ def main():
         from time import sleep
         system('setterm -cursor off')
         system('clear')
-        score = 0
+        pedal = GraphicVar((3,80), hbar, 32)
+        pedal.show()
+        gauge = GraphicVar((2,80), hbar, 32, 4)
+        gauge.show()
         hp = GraphicVar((1,80), hbar, 8)
         hp.value = 64
         hp.show()
+        score = 0
         while hp.value > 0:
                 print loc(1, 100) + "Score " + str(score)
-                pedal = GraphicVar((3,80), hbar, 32)
-                gauge = GraphicVar((2,80), hbar, 32, 4)
                 gauge.value = randint(0,255)
-                pedal.show()
-                gauge.show()
                 pedal.bs_input()
-                gauge.sigma = 0
                 loss = (gauge.value - pedal.value)**2
                 score += 16 - loss
                 hp.value -= loss
-                #getch()
-                pedal.hide()
-                gauge.hide()
         hp.hide()
+        pedal.hide()
+        gauge.hide()
         system('clear')
         system('setterm -cursor on')
         print "Final score:", score

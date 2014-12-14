@@ -23,13 +23,6 @@ def meter(illustrate, size, value):
         display += ' '*(size - len(display)/3)
         return display
 
-def gaussed(size, sigma, value):
-        """Deviate value with random.gauss function limit between 0 and size-1
-
-        """
-        from random import gauss
-        return sorted([0, int(gauss(value, sigma)), size-1])[1]
-
 class GraphicVar(object):
         def __init__(self, pos, illustrate, size, sigma = 0):
                 from threading import Thread
@@ -46,8 +39,7 @@ class GraphicVar(object):
 
                 """
                 return loc(self.y, self.x) + meter(self.illustrate, self.size,\
-                                                gaussed(self.size*8,          \
-                                                self.sigma, self.value))
+                                                self.gaussed_value()) 
         def display_loop(self):
                 """Print self continuously until program ends.
 
@@ -82,3 +74,11 @@ class GraphicVar(object):
                         elif ch == Key.RIGHT_ARROW:
                                 n /= 2
                                 self.value += n
+        def gaussed_value(self):
+                """Deviate value with random.gauss function limit between 0 and size-1
+
+                """
+                from random import gauss
+                return sorted([0, int(gauss(self.value, self.sigma)),          \
+                                                (self.size*8)-1])[1]
+
