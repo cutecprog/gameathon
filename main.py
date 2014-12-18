@@ -10,14 +10,13 @@ def main():
                 data = f.read()
         origin = (4,4)
         full_grid(origin)
-        for i in range(0,4):
-                w = randint(0,3)
-                x = randint(0,3)
-                y = randint(0,3)
-                z = randint(0,3)
-                print coord(origin, z,w,y,x) + 'x'
-                getch()
-        print data
+        for i in range(0,256):
+                w = (i/4)%4
+                x = i%4
+                y = (i/16)%4
+                z = i/64
+                #print z, w, y, x
+                print coord(origin, z,w,y,x) + data[i]
 
 def coord(origin, z, w, y, x):
         from lib.display import loc
