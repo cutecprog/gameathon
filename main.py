@@ -5,9 +5,10 @@ def main():
         from lib.display import loc
         from lib.keyboard import getch
         system("clear")
-        full_grid(4,4)
-        print loc(4,4) + 'x'
-        print loc(6,8) + 'x'
+        origin = (4,4)
+        full_grid(origin[0], origin[1])
+        print loc(origin[0],origin[1]) + 'x'
+        print loc(origin[0]+2, origin[1]+4) + 'x'
         getch()
 
 def grid(y,x):
