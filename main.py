@@ -5,17 +5,22 @@ def main():
         from lib.keyboard import getch
         from random import randint
         system('clear')
+        origin = (4,4)
+        full_grid(origin)
+        print_data(origin)
+        getch()
+
+def print_data(origin):
+        from sys import stdout
         data = ''
         with open('tmp.data','r') as f:
                 data = f.read()
-        origin = (4,4)
-        full_grid(origin)
-        for i in range(0,256):
+        for i in range(0, len(data)):
                 w = (i/4)%4
                 x = i%4
                 y = (i/16)%4
                 z = (i/64)%4 # Roll back to origin if i >= 256
-                print coord(origin, z,w,y,x) + data[i]
+                stdout.write(coord(origin, z,w,y,x) + data[i])
 
 def coord(origin, z, w, y, x):
         """Convert 4d coordinates to a position in the shell screen.
