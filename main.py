@@ -6,7 +6,7 @@ def main():
         from lib.keyboard import getch
         system("clear")
         origin = (4,4)
-        full_grid(origin[0], origin[1])
+        full_grid(origin)
         for i in range(0,4):
                 print loc(origin[0]+2*i,origin[1]+4*i) + 'x'
                 getch()
@@ -27,7 +27,8 @@ def grid(y,x):
                         print loc(y + i, x +  7) + '\xe2\x94\x80' * 3
                         print loc(y + i, x + 11) + '\xe2\x94\x80' * 2
 
-def full_grid(y,x):
+def full_grid(pos):
+        y,x = pos
         grid(y,    x); grid(y,    x + 15); grid(y,    x + 30); grid(y,    x+45)
         grid(y+8,  x); grid(y+8,  x + 15); grid(y+8,  x + 30); grid(y+8,  x+45)
         grid(y+16, x); grid(y+16, x + 15); grid(y+16, x + 30); grid(y+16, x+45)
