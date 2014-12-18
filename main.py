@@ -7,9 +7,9 @@ def main():
         system("clear")
         origin = (4,4)
         full_grid(origin[0], origin[1])
-        print loc(origin[0],origin[1]) + 'x'
-        print loc(origin[0]+2, origin[1]+4) + 'x'
-        getch()
+        for i in range(0,4):
+                print loc(origin[0]+2*i,origin[1]+4*i) + 'x'
+                getch()
 
 def grid(y,x):
         from lib.display import loc
