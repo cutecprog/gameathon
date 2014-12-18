@@ -24,3 +24,18 @@ class KeyPress(object):
 key_press = KeyPress()
 key_press.add_event('\033', pause)
 key_press.add_event('([a-z]|[A-Z])*', insert)
+
+class Cursor(object):
+        def __init__(self, pos, char):
+                self.pos  = pos
+                self.char = char
+        def __repr__(self):
+                return loc(self.y, self.x) + char)
+        def display_loop(self):
+                ...
+        def insert(self, str):
+                print loc(self.y, self.x) + str
+                self.y += len(str)
+
+def binary_search_int():
+        
