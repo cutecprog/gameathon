@@ -8,7 +8,7 @@ def main():
         origin = (4,4)
         full_grid(origin)
         for i in range(0,4):
-                print loc(origin[0]+2*i,origin[1]+4*i) + 'x'
+                print loc(origin[0]+2*i+8*i,origin[1]+4*i+15*i) + 'x'
                 getch()
 
 def grid(y,x):
