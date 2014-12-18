@@ -2,14 +2,17 @@
 
 def main():
         from os import system
-        from lib.display import loc
         from lib.keyboard import getch
         system("clear")
         origin = (4,4)
         full_grid(origin)
         for i in range(0,4):
-                print loc(origin[0]+2*i+8*i,origin[1]+4*i+15*i) + 'x'
+                print coord(origin, i,i,i,i) + 'x'
                 getch()
+
+def coord(origin, z, w, y, x):
+        from lib.display import loc
+        return loc(origin[0] + 2*y + 8*z, origin[1] + 4*x + 15*w)
 
 def grid(y,x):
         from lib.display import loc
