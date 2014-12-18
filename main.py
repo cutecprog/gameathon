@@ -14,11 +14,13 @@ def main():
                 w = (i/4)%4
                 x = i%4
                 y = (i/16)%4
-                z = i/64
-                #print z, w, y, x
+                z = (i/64)%4 # Roll back to origin if i >= 256
                 print coord(origin, z,w,y,x) + data[i]
 
 def coord(origin, z, w, y, x):
+        """Convert 4d coordinates to a position in the shell screen.
+
+        """
         from lib.display import loc
         return loc(origin[0] + 2*y + 8*z, origin[1] + 4*x + 15*w)
 
