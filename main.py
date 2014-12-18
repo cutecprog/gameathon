@@ -3,11 +3,16 @@
 def main():
         from os import system
         from lib.keyboard import getch
+        from random import randint
         system("clear")
         origin = (4,4)
         full_grid(origin)
         for i in range(0,4):
-                print coord(origin, i,i,i,i) + 'x'
+                w = randint(0,3)
+                x = randint(0,3)
+                y = randint(0,3)
+                z = randint(0,3)
+                print coord(origin, w,x,y,z) + 'x'
                 getch()
 
 def coord(origin, z, w, y, x):
