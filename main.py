@@ -28,9 +28,9 @@ def insert_data(pos, sym):
         with open('tmp.data', 'r+') as f:
                 data = list(f.read())
                 data[x + 4*w + 16*y + 64*z] = sym
-                #''.join(data)
-                #f.write(data)
-                print data
+                data = ''.join(data)
+                f.write(data)
+                #print data
 
 def coord(origin, z, w, y, x):
         """Convert 4d coordinates to a position in the shell screen.
