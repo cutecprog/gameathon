@@ -7,9 +7,12 @@ def main():
         system('clear')
         origin = (4,4)
         full_grid(origin)
-        insert_data((2,2,2,2), 'A')
-        print_data(origin)
-        getch()
+        pos = (0,0,0,0)
+        ch = ''
+        while ch != 'e':
+                print_data(origin)
+                ch = getch()
+                insert_data(pos, 'B')
 
 def print_data(origin):
         from sys import stdout
@@ -29,8 +32,9 @@ def insert_data(pos, sym):
                 data = list(f.read())
                 data[x + 4*w + 16*y + 64*z] = sym
                 data = ''.join(data)
+                f.seek(0)
                 f.write(data)
-                #print data
+                f.truncate()
 
 def coord(origin, z, w, y, x):
         """Convert 4d coordinates to a position in the shell screen.
