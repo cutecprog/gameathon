@@ -12,7 +12,7 @@ def main():
                 x = randint(0,3)
                 y = randint(0,3)
                 z = randint(0,3)
-                print coord(origin, w,x,y,z) + 'x'
+                print coord(origin, z,w,y,x) + 'x'
                 getch()
 
 def coord(origin, z, w, y, x):
