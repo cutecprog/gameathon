@@ -7,6 +7,7 @@ def main():
         system("clear")
         full_grid(4,4)
         print loc(4,4) + 'x'
+        print loc(6,8) + 'x'
         getch()
 
 def grid(y,x):
