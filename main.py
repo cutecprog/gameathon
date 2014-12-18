@@ -4,7 +4,10 @@ def main():
         from os import system
         from lib.keyboard import getch
         from random import randint
-        system("clear")
+        system('clear')
+        data = ''
+        with open('tmp.data','r') as f:
+                data = f.read()
         origin = (4,4)
         full_grid(origin)
         for i in range(0,4):
@@ -14,6 +17,7 @@ def main():
                 z = randint(0,3)
                 print coord(origin, z,w,y,x) + 'x'
                 getch()
+        print data
 
 def coord(origin, z, w, y, x):
         from lib.display import loc
