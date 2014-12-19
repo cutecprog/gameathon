@@ -18,6 +18,13 @@ def main():
                         else:
                                 pos[2] += 1
                 insert_data(pos, 'B')
+        clear_data()
+
+def clear_data():
+        with open('tmp.data', 'w') as f:
+                f.seek(0)
+                f.write(' '*256)
+                f.truncate()
 
 def print_data(origin):
         from sys import stdout
