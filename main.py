@@ -79,7 +79,8 @@ def insert_data(pos, sym):
         z, w, y, x = pos
         with open('tmp.data', 'r+') as f:
                 data = list(f.read())
-                data[x + 4*w + 16*y + 64*z] = sym
+                index = x + 4*w + 16*y + 64*z
+                data[index] = sym
                 data = ''.join(data)
                 f.seek(0)
                 f.write(data)
