@@ -53,8 +53,9 @@ def main():
                         else:
                                 pos[3] += 1
                 elif ch == ' ':
-                        insert_data(pos, sym)
-                        last_move = list(pos)
+                        inserted = insert_data(pos, sym)
+                        if inserted:
+                                last_move = list(pos)
                 elif ch == 'u':
                         insert_data(last_move, ' ')
         clear_data()
@@ -98,10 +99,13 @@ def insert_data(pos, sym):
                 index = x + 4*w + 16*y + 64*z
                 if data[index] == ' ' or sym == ' ':
                         data[index] = sym
+                else:
+                        return
                 data = ''.join(data)
                 f.seek(0)
                 f.write(data)
                 f.truncate()
+        return True
 
 def coord(origin, z, w, y, x):
         """Convert 4d coordinates to a position in the shell screen.
