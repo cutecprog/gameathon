@@ -60,9 +60,15 @@ def main():
                                 end_turn()
                 elif ch == Key.ESC:
                         clear_data()
+                elif ch == 'w':
+                        print_winner(sym)
         remove_player(sym)
         system('setterm -cursor on')
         system("clear")
+
+def print_winner(sym):
+        with open('tmp.data', 'w') as f:
+                f.write(' '*81 + sym + ' won the game' + ' '*162)
 
 def add_player(sym):
         with open('turn.data', 'r+') as f:
