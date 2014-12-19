@@ -2,16 +2,21 @@
 
 def main():
         from os import system
-        from lib.keyboard import getch
+        from lib.keyboard import getch, Key
         from random import randint
         system('clear')
         origin = (4,4)
         full_grid(origin)
-        pos = (0,0,0,0)
+        pos = [0,0,0,0]
         ch = ''
         while ch != 'e':
                 print_data(origin)
                 ch = getch()
+                if ch == Key.UP_ARROW:
+                        if pos[2] == 0:
+                                pos[0] = (pos[0] + 1)%4
+                        else:
+                                pos[2] += 1
                 insert_data(pos, 'B')
 
 def print_data(origin):
