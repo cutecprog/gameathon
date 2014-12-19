@@ -25,6 +25,18 @@ def main():
                                 pos[2] = 0
                         else:
                                 pos[2] += 1
+                elif ch == Key.LEFT_ARROW:
+                        if pos[3] == 0:
+                                pos[1] = (pos[1] - 1)%4
+                                pos[3] = 3
+                        else:
+                                pos[3] -= 1
+                elif ch == Key.RIGHT_ARROW:
+                        if pos[3] == 3:
+                                pos[1] = (pos[1] + 1)%4
+                                pos[3] = 0
+                        else:
+                                pos[3] += 1
                 elif ch == ' ':
                         insert_data(pos, 'B')
         clear_data()
