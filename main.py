@@ -25,7 +25,8 @@ def main():
                                 pos[2] = 0
                         else:
                                 pos[2] += 1
-                insert_data(pos, 'B')
+                elif ch == ' ':
+                        insert_data(pos, 'B')
         clear_data()
         system('setterm -cursor on')
 
