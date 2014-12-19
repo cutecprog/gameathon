@@ -60,6 +60,7 @@ def main():
                 elif ch == 'u':
                         insert_data(last_move, ' ')
         clear_data()
+        remove_player(sym)
         system('setterm -cursor on')
         system("clear")
 
@@ -68,6 +69,17 @@ def add_player(sym):
                 f.read()
                 f.write(sym)
 
+def remove_player(sym):
+        with open('turn.data', 'r+') as f:
+                players = list(f.read())
+                remaining_players = []
+                for player in players:
+                        if player != sym:
+                                remaining_players.append(player)
+                players = ''.join(remaining_players)
+                f.seek(0)
+                f.write(players)
+                f.truncate()
 def loop(origin, pos):
         from time import sleep
         while True:
