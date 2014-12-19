@@ -6,9 +6,13 @@ def main():
         from random import randint
         from threading import Thread
         from lib.display import loc
+        from string import whitespace
         system('setterm -cursor off')
         print "Press a key of a visable character you like"
-        sym = getch()
+        sym = ' '
+        while sym[0] in whitespace or '\033' in sym:
+                sym = getch()
+        sym = sym[0]
         system('clear')
         print loc(1,8) + "Use arrow key to select space"
         print loc(2,8) + "Use space to mark space"
