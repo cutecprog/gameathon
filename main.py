@@ -40,6 +40,7 @@ def main():
                 elif ch == ' ':
                         insert_data(pos, 'B')
         clear_data()
+        system("clear")
         system('setterm -cursor on')
 
 def clear_data():
