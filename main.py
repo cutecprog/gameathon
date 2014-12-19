@@ -19,6 +19,12 @@ def main():
                                 pos[2] = 3
                         else:
                                 pos[2] -= 1
+                elif ch == Key.DOWN_ARROW:
+                        if pos[2] == 3:
+                                pos[0] = (pos[0] + 1)%4
+                                pos[2] = 0
+                        else:
+                                pos[2] += 1
                 insert_data(pos, 'B')
         clear_data()
         system('setterm -cursor on')
