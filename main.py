@@ -14,6 +14,7 @@ def main():
                 sym = getch()
         sym = sym[0]
         system('clear')
+        add_player(sym)
         print loc(1,8) + "Use arrow key to select space"
         print loc(2,8) + "Use space to mark space"
         print loc(1, 44) + "Press u to undo"
@@ -61,6 +62,11 @@ def main():
         clear_data()
         system('setterm -cursor on')
         system("clear")
+
+def add_player(sym):
+        with open('turn.data', 'r+') as f:
+                f.read()
+                f.write(sym)
 
 def loop(origin, pos):
         from time import sleep
