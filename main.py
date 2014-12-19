@@ -58,12 +58,8 @@ def main():
                         if inserted:
                                 last_move = list(pos)
                                 end_turn()
-                elif ch == Key.BACKSPACE:
+                elif ch == Key.ESC:
                         clear_data()
-                #elif ch == 'u':
-                #        insert_data(last_move, ' ')
-                #        remove_player(sym)
-                #        add_player(sym) # Put sym at top of list
         remove_player(sym)
         system('setterm -cursor on')
         system("clear")
