@@ -5,9 +5,15 @@ def main():
         from lib.keyboard import getch, Key
         from random import randint
         from threading import Thread
+        from lib.display import loc
         system('setterm -cursor off')
-        system('clear')
+        print "Press a key of a visable character you like"
         sym = getch()
+        system('clear')
+        print loc(1,8) + "Use arrow key to select space"
+        print loc(2,8) + "Use space to mark space"
+        print loc(1, 44) + "Press u to undo"
+        print loc(2, 44) + "Press e to exit"
         origin = (4,4)
         full_grid(origin)
         pos = [0,0,0,0]
