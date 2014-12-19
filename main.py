@@ -15,10 +15,10 @@ def main():
         sym = sym[0]
         system('clear')
         add_player(sym)
-        print loc(1,8) + "Use arrow key to select space"
-        print loc(2,8) + "Use space to mark space"
-        print loc(1, 44) + "Press u to undo"
-        print loc(2, 44) + "Press e to exit"
+        print loc(1,3) + "Press arrow key to select space"
+        print loc(2,3) + "Press space to mark space"
+        print loc(1, 38) + "Press ESC to clear board"
+        print loc(2, 38) + "Press e to exit"
         origin = (4,4)
         full_grid(origin)
         pos = [0,0,0,0]
