@@ -11,6 +11,7 @@ def main():
         origin = (4,4)
         full_grid(origin)
         pos = [0,0,0,0]
+        last_move = []
         t = Thread(target=loop, args=[origin, pos])
         t.daemon = True
         t.start()
@@ -43,6 +44,9 @@ def main():
                                 pos[3] += 1
                 elif ch == ' ':
                         insert_data(pos, sym)
+                        last_move = list(pos)
+                elif ch == 'u':
+                        insert_data(last_move, ' ')
         clear_data()
         system('setterm -cursor on')
         system("clear")
@@ -76,11 +80,14 @@ def print_data(origin, cursor):
                         stdout.write(coord(origin, z,w,y,x) + data[i])
 
 def insert_data(pos, sym):
+        if len(pos) != 4:
+                return
         z, w, y, x = pos
         with open('tmp.data', 'r+') as f:
                 data = list(f.read())
                 index = x + 4*w + 16*y + 64*z
-                data[index] = sym
+                if data[index] == ' ' or sym == ' ':
+                        data[index] = sym
                 data = ''.join(data)
                 f.seek(0)
                 f.write(data)
