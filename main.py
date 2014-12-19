@@ -7,6 +7,7 @@ def main():
         from threading import Thread
         system('setterm -cursor off')
         system('clear')
+        sym = getch()
         origin = (4,4)
         full_grid(origin)
         pos = [0,0,0,0]
@@ -15,7 +16,6 @@ def main():
         t.start()
         ch = ''
         while ch != 'e':
-                print_data(origin, pos)
                 ch = getch()
                 if ch == Key.UP_ARROW:
                         if pos[2] == 0:
@@ -42,10 +42,10 @@ def main():
                         else:
                                 pos[3] += 1
                 elif ch == ' ':
-                        insert_data(pos, 'B')
+                        insert_data(pos, sym)
         clear_data()
-        system("clear")
         system('setterm -cursor on')
+        system("clear")
 
 def loop(origin, pos):
         from time import sleep
