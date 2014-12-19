@@ -4,11 +4,15 @@ def main():
         from os import system
         from lib.keyboard import getch, Key
         from random import randint
+        from threading import Thread
         system('setterm -cursor off')
         system('clear')
         origin = (4,4)
         full_grid(origin)
         pos = [0,0,0,0]
+        t = Thread(target=loop, args=[origin, pos])
+        t.daemon = True
+        t.start()
         ch = ''
         while ch != 'e':
                 print_data(origin, pos)
@@ -42,6 +46,12 @@ def main():
         clear_data()
         system("clear")
         system('setterm -cursor on')
+
+def loop(origin, pos):
+        from time import sleep
+        while True:
+                print_data(origin, pos)
+                sleep(0.083)
 
 def clear_data():
         with open('tmp.data', 'w') as f:
