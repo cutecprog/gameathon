@@ -23,3 +23,4 @@ class Key:
         RIGHT_ARROW = '\033[C'
         LEFT_ARROW = '\033[D'
         ESC = '\033'
+        BACKSPACE = '\033[3~'

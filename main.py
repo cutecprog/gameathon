@@ -57,9 +57,13 @@ def main():
                         inserted = insert_data(pos, sym)
                         if inserted:
                                 last_move = list(pos)
-                elif ch == 'u':
-                        insert_data(last_move, ' ')
-        clear_data()
+                                end_turn()
+                elif ch == Key.BACKSPACE:
+                        clear_data()
+                #elif ch == 'u':
+                #        insert_data(last_move, ' ')
+                #        remove_player(sym)
+                #        add_player(sym) # Put sym at top of list
         remove_player(sym)
         system('setterm -cursor on')
         system("clear")
@@ -67,7 +71,7 @@ def main():
 def add_player(sym):
         with open('turn.data', 'r+') as f:
                 players = f.read().strip('\n')
-                players += sym
+                players = sym + players
                 f.seek(0)
                 f.write(players)
                 f.truncate()
@@ -91,6 +95,14 @@ def is_turn(sym):
         if sym == current_player:
                 return True
         return False
+
+def end_turn():
+        with open('turn.data', 'r+') as f:
+                players = f.read()
+                players = players[1:] + players[0]
+                f.seek(0)
+                f.write(players)
+                f.truncate()
 
 def loop(origin, pos):
         from time import sleep
