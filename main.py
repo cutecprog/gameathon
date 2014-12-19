@@ -53,7 +53,7 @@ def main():
                                 pos[3] = 0
                         else:
                                 pos[3] += 1
-                elif ch == ' ':
+                elif ch == ' ' and is_turn(sym):
                         inserted = insert_data(pos, sym)
                         if inserted:
                                 last_move = list(pos)
@@ -66,8 +66,11 @@ def main():
 
 def add_player(sym):
         with open('turn.data', 'r+') as f:
-                f.read()
-                f.write(sym)
+                players = f.read().strip('\n')
+                players += sym
+                f.seek(0)
+                f.write(players)
+                f.truncate()
 
 def remove_player(sym):
         with open('turn.data', 'r+') as f:
@@ -80,6 +83,15 @@ def remove_player(sym):
                 f.seek(0)
                 f.write(players)
                 f.truncate()
+
+def is_turn(sym):
+        current_player = ''
+        with open('turn.data', 'r') as f:
+                current_player = f.read(1)
+        if sym == current_player:
+                return True
+        return False
+
 def loop(origin, pos):
         from time import sleep
         while True:
