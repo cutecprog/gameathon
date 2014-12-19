@@ -10,13 +10,13 @@ def main():
         pos = [0,0,0,0]
         ch = ''
         while ch != 'e':
-                print_data(origin)
+                print_data(origin, pos)
                 ch = getch()
                 if ch == Key.UP_ARROW:
                         if pos[2] == 0:
-                                pos[0] = (pos[0] + 1)%4
+                                pos[0] = (pos[0] - 1)%4
                         else:
-                                pos[2] += 1
+                                pos[2] -= 1
                 insert_data(pos, 'B')
         clear_data()
 
@@ -26,7 +26,7 @@ def clear_data():
                 f.write(' '*256)
                 f.truncate()
 
-def print_data(origin):
+def print_data(origin, cursor):
         from sys import stdout
         data = ''
         with open('tmp.data','r') as f:
@@ -36,6 +36,10 @@ def print_data(origin):
                 x = i%4
                 y = (i/16)%4
                 z = (i/64)%4 # Roll back to origin if i >= 256
+                if cursor == [z, w, y, x]:
+                        print cursor
+                        stdout.write(coord(origin, z,w,y,x) + '\033[7m'       \
+                                         + 'X' + '\033[0m')
                 stdout.write(coord(origin, z,w,y,x) + data[i])
 
 def insert_data(pos, sym):
