@@ -4,6 +4,7 @@ def main():
         from os import system
         from lib.keyboard import getch, Key
         from random import randint
+        system('setterm -cursor off')
         system('clear')
         origin = (4,4)
         full_grid(origin)
@@ -15,10 +16,12 @@ def main():
                 if ch == Key.UP_ARROW:
                         if pos[2] == 0:
                                 pos[0] = (pos[0] - 1)%4
+                                pos[2] = 3
                         else:
                                 pos[2] -= 1
                 insert_data(pos, 'B')
         clear_data()
+        system('setterm -cursor on')
 
 def clear_data():
         with open('tmp.data', 'w') as f:
@@ -37,10 +40,10 @@ def print_data(origin, cursor):
                 y = (i/16)%4
                 z = (i/64)%4 # Roll back to origin if i >= 256
                 if cursor == [z, w, y, x]:
-                        print cursor
                         stdout.write(coord(origin, z,w,y,x) + '\033[7m'       \
-                                         + 'X' + '\033[0m')
-                stdout.write(coord(origin, z,w,y,x) + data[i])
+                                         + data[i] + '\033[0m')
+                else:
+                        stdout.write(coord(origin, z,w,y,x) + data[i])
 
 def insert_data(pos, sym):
         z, w, y, x = pos
