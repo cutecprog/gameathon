@@ -58,8 +58,6 @@ def main():
                         if inserted:
                                 last_move = list(pos)
                                 end_turn()
-                                print loc(3,1) + ' '*160
-                                print loc(3,1) + str(get_contiguous(pos, sym))
                 elif ch == Key.ESC:
                         clear_data()
                 elif ch == 'w':
