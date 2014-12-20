@@ -66,30 +66,6 @@ def main():
         system('setterm -cursor on')
         system("clear")
 
-def get_contiguous(pos, sym):
-        """Return list of relative position contiguous to pos and hold sym
-
-        """
-        z, w, y, x = pos
-        index = x + 4*w + 16*y + 64*z
-        data = ''
-        contiguous = []
-        with open('tmp.data', 'r') as f:
-                data = f.read()
-        for x in range(-1,2): # -1, 0, 1
-                for w in range(-1,2):
-                        for y in range(-1,2):
-                                for z in range(-1, 2):
-                                        contiguous_index = index              \
-                                                        + x+4*w+16*y+64*z
-                                        if contiguous_index >= 256:
-                                                pass
-                                        elif data[contiguous_index] == sym    \
-                                                        and (z,w,y,x)         \
-                                                        != (0,0,0,0):
-                                                contiguous.append((z,w,y,x))
-        return contiguous
-
 def print_winner(sym):
         with open('tmp.data', 'w') as f:
                 f.write(' '*81 + sym + ' won the game' + ' '*162)
