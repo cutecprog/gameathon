@@ -38,4 +38,9 @@ class Cursor(object):
                 self.y += len(str)
 
 def binary_search_int():
-        
+
+(0,0,0,-1)
+(0,0,0,1)
+(0,0,-1,0)
+(0,0,1,0)
+(0,-1,0        

@@ -1,6 +1,6 @@
 """Hold game code in this file"""
 
-def main():
+def main(): # Final
         from os import system
         from lib.keyboard import getch, Key
         from random import randint
