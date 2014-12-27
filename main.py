@@ -1,7 +1,7 @@
 """Hold game code in this file"""
 
 def main():
-        pass
+        print "Start"
 
 if __name__=='__main__':
         main()

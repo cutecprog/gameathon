@@ -24,3 +24,7 @@ class Key:
         LEFT_ARROW = '\033[D'
         ESC = '\033'
         BACKSPACE = '\033[3~'
+
+class Cursor:
+        def __init__(self, symbol, position = [0,0])
+                pass
