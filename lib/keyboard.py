@@ -17,6 +17,13 @@ def getch():
                 tcsetattr(fd, TCSADRAIN, old_settings)
         return ch
 
+def loc(pos):
+        """Return string to move cursor to pos
+
+        """
+        y, x = pos
+        return '\033[%s;%sH' % (str(y),str(x))
+
 class Key:
         """Hold special characters
 
@@ -35,3 +42,9 @@ class Cursor(object):
         def __init__(self, position, symbol):
                 self.position = position
                 self.symbol = symbol
+
+        def __repr__(self):
+                """Return printable string for symbol at position
+
+                """
+                return loc(self.position) + self.symbol
