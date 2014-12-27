@@ -32,5 +32,6 @@ class Cursor(object):
         """Hold a position one a terminal screen
 
         """
-        def __init__(self, position):
+        def __init__(self, position, symbol):
                 self.position = position
+                self.symbol = symbol
