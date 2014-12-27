@@ -18,6 +18,9 @@ def getch():
         return ch
 
 class Key:
+        """Hold special characters
+
+        """
         UP_ARROW = '\033[A'
         DOWN_ARROW = '\033[B'
         RIGHT_ARROW = '\033[C'
@@ -26,4 +29,8 @@ class Key:
         BACKSPACE = '\033[3~'
 
 class Cursor(object):
-        pass
+        """Hold a position one a terminal screen
+
+        """
+        def __init__(self, position):
+                self.position = position
