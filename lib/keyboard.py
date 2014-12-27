@@ -24,3 +24,6 @@ class Key:
         LEFT_ARROW = '\033[D'
         ESC = '\033'
         BACKSPACE = '\033[3~'
+
+class Cursor(object):
+        pass
