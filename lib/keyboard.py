@@ -48,3 +48,8 @@ class Cursor(object):
 
                 """
                 return loc(self.position) + self.symbol
+
+        def __setattr__(self, name, value):
+                #if name == 'position':
+                #        print loc(self.position) + ' '
+                self.__dict__[name] = value
