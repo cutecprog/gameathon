@@ -3,7 +3,7 @@
 from lib.keyboard import getch, Cursor, Key, loc
 
 def main():
-        a = Cursor([20,80], 'u')
+        a = Cursor([20,80], 'o')
         last_position = list(a.position)
         while True:
                 ch = getch()
