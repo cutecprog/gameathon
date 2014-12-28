@@ -34,7 +34,12 @@ class Key:
         LEFT_ARROW = '\033[D'
         ESC = '\033'
         BACKSPACE = '\033[3~'
-
+        HBAR = '\xe2\x94\x80'
+        VBAR = '\xe2\x94\x82'
+        TLBAR = '\xe2\x94\x8c'
+        TRBAR = '\xe2\x94\x90'
+        BLBAR = '\xe2\x94\x94'
+        BRBAR = '\xe2\x94\x98'
 class Cursor(object):
         """Hold a position one a terminal screen
 
