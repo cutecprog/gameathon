@@ -16,10 +16,7 @@ def main():
                 if ch == Key.UP_ARROW:
                         me.move_up()
                 elif ch == Key.DOWN_ARROW:
-                        y,x = me.pos
-                        if y%2:
-                                stdout.write(loc(y/2,x) + ' ')
-                        me.pos[0] += 1
+                        me.move_down()
                 elif ch == Key.LEFT_ARROW:
                         y,x = me.pos
                         stdout.write(loc(y/2,x) + ' ')
@@ -57,6 +54,16 @@ class Player(object):
                         stdout.write(loc(y/2, x) + ' ')
                         self.sym = Key.BV_WORM
                         self.pos[0] -= 1
+        def move_down(self):
+                if self.sym == Key.BV_WORM:
+                        y, x = self.pos
+                        stdout.write(loc(y/2, x) + ' ')
+                        self.sym = Key.TV_WORM
+                        self.pos[0] += 1
+                else:
+                        self.sym = Key.BV_WORM
+                        self.pos[0] += 1
+
 
 if __name__=='__main__':
         main()
