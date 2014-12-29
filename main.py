@@ -7,6 +7,7 @@ def main():
         from os import system
         system('setterm -cursor off')
         system('clear')
+        print loc(20,20) + '\033[7m  \033[0m'
         me = Player([80,80])
         print me
         while True:
@@ -41,9 +42,9 @@ class Player(object):
         def __repr__(self):
                 y, x = self.pos
                 if y%2 == 0:
-                        return '\033[%s;%sH\xe2\x81\xb0' % (str(y/2), str(x))
+                        return '\033[%s;%sH\xe2\x95\xb9' % (str(y/2), str(x))
                 else:
-                        return '\033[%s;%sH\xe2\x82\x80' % (str(y/2), str(x))
+                        return '\033[%s;%sH\xe2\x95\xbb' % (str(y/2), str(x))
 
 if __name__=='__main__':
         main()
