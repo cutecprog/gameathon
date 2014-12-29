@@ -1,9 +1,10 @@
 """Hold game code in this file"""
 
 def main():
-        print me()
+        me = Player([80,80])
+        print me
 
-class me(object):
+class Player(object):
         def __init__(self, pos = [0,0]):
                 self.pos = pos
         def __repr__(self):
