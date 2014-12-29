@@ -46,24 +46,33 @@ class Player(object):
                 else:
                         return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
         def move_up(self):
+                y, x = self.pos
                 if self.sym == Key.BV_WORM:
                         self.sym = Key.TV_WORM
                         self.pos[0] -= 1
-                else:
-                        y, x = self.pos
+                elif self.sym == Key.TV_WORM:
                         stdout.write(loc(y/2, x) + ' ')
                         self.sym = Key.BV_WORM
                         self.pos[0] -= 1
+                elif y%2 == 0: # Top
+                        self.sym = Key.TV_WORM
+                else:          # Bottom
+                        self.sym = Key.BV_WORM
         def move_down(self):
+                y, x = self.pos
                 if self.sym == Key.BV_WORM:
-                        y, x = self.pos
                         stdout.write(loc(y/2, x) + ' ')
                         self.sym = Key.TV_WORM
                         self.pos[0] += 1
-                else:
+                elif self.sym == Key.TV_WORM:
                         self.sym = Key.BV_WORM
                         self.pos[0] += 1
-
+                elif y%2 == 0: # Top
+                        self.sym = Key.TV_WORM
+                else:          # Bottom
+                        self.sym = Key.BV_WORM
+        #def move_left(self):
+        #        if self.sym == K.BV_WORM
 
 if __name__=='__main__':
         main()
