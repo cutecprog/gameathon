@@ -48,11 +48,11 @@ class Cursor(object):
 
         """
         def __init__(self, position, symbol):
-                self.position = position
-                self.symbol = symbol
+                self.pos = position
+                self.sym = symbol
 
         def __repr__(self):
                 """Return printable string for symbol at position
 
                 """
-                return loc(self.position) + self.symbol
+                return loc(self.pos) + self.sym

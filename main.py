@@ -1,11 +1,11 @@
 """Hold game code in this file"""
 
 from lib.keyboard import getch, Key, Cursor
+from lib.display import loc
+from sys import stdout
+from os import system
 
 def main():
-        from lib.display import loc
-        from sys import stdout
-        from os import system
         system('setterm -cursor off')
         system('clear')
         print loc(20,20) + '\033[7m  \033[0m'
@@ -14,10 +14,7 @@ def main():
         while True:
                 ch = getch()
                 if ch == Key.UP_ARROW:
-                        y,x = me.pos
-                        if y%2==0:
-                                stdout.write(loc(y/2,x) + ' ')
-                        me.pos[0] -= 1
+                        me.move_up()
                 elif ch == Key.DOWN_ARROW:
                         y,x = me.pos
                         if y%2:
@@ -40,12 +37,26 @@ def main():
 class Player(object):
         def __init__(self, pos = [0,0]):
                 self.pos = pos
+                y, x = self.pos
+                if y%2 == 0:
+                        self.sym = Key.TV_WORM
+                else:
+                        self.sym = Key.BV_WORM
         def __repr__(self):
                 y, x = self.pos
                 if y%2 == 0:
                         return '\033[%s;%sH' % (str(y/2), str(x)) + Key.TV_WORM
                 else:
                         return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
+        def move_up(self):
+                if self.sym == Key.BV_WORM:
+                        self.sym = Key.TV_WORM
+                        self.pos[0] -= 1
+                else:
+                        y, x = self.pos
+                        stdout.write(loc(y/2, x) + ' ')
+                        self.sym = Key.BV_WORM
+                        self.pos[0] -= 1
 
 if __name__=='__main__':
         main()
