@@ -4,6 +4,9 @@ def main():
         from lib.keyboard import getch, Key
         from lib.display import loc
         from sys import stdout
+        from os import system
+        system('setterm -cursor off')
+        system('clear')
         me = Player([80,80])
         print me
         while True:
@@ -29,6 +32,8 @@ def main():
                 elif ch == 'q':
                         break
                 print me
+        system('clear')
+        system('setterm -cursor on')
 
 class Player(object):
         def __init__(self, pos = [0,0]):
