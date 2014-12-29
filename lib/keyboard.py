@@ -28,18 +28,21 @@ class Key:
         """Hold special characters
 
         """
-        UP_ARROW = '\033[A'
-        DOWN_ARROW = '\033[B'
+        UP_ARROW    = '\033[A'
+        DOWN_ARROW  = '\033[B'
         RIGHT_ARROW = '\033[C'
-        LEFT_ARROW = '\033[D'
-        ESC = '\033'
-        BACKSPACE = '\033[3~'
-        HBAR = '\xe2\x94\x80'
-        VBAR = '\xe2\x94\x82'
-        TLBAR = '\xe2\x94\x8c'
-        TRBAR = '\xe2\x94\x90'
-        BLBAR = '\xe2\x94\x94'
-        BRBAR = '\xe2\x94\x98'
+        LEFT_ARROW  = '\033[D'
+        ESC         = '\033'
+        BACKSPACE   = '\033[3~'
+        HBAR        = '\xe2\x94\x80'
+        VBAR        = '\xe2\x94\x82'
+        TL_CORNER   = '\xe2\x94\x8c'
+        TR_CORNER   = '\xe2\x94\x90'
+        BL_CORNER   = '\xe2\x94\x94'
+        BR_CORNER   = '\xe2\x94\x98'
+        TV_WORM     = '\xe2\x95\xb9'
+        BV_WORM     = '\xe2\x95\xbb'
+
 class Cursor(object):
         """Hold a position one a terminal screen
 

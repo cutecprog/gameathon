@@ -1,7 +1,8 @@
 """Hold game code in this file"""
 
+from lib.keyboard import getch, Key, Cursor
+
 def main():
-        from lib.keyboard import getch, Key
         from lib.display import loc
         from sys import stdout
         from os import system
@@ -42,9 +43,9 @@ class Player(object):
         def __repr__(self):
                 y, x = self.pos
                 if y%2 == 0:
-                        return '\033[%s;%sH\xe2\x95\xb9' % (str(y/2), str(x))
+                        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.TV_WORM
                 else:
-                        return '\033[%s;%sH\xe2\x95\xbb' % (str(y/2), str(x))
+                        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
 
 if __name__=='__main__':
         main()
