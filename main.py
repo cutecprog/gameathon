@@ -3,27 +3,28 @@
 def main():
         from lib.keyboard import getch, Key
         from lib.display import loc
+        from sys import stdout
         me = Player([80,80])
         print me
         while True:
                 ch = getch()
                 if ch == Key.UP_ARROW:
-                        #y,x = me.pos
-                        #if y%2:
-                        #        print loc(y,x) + ' '
+                        y,x = me.pos
+                        if y%2==0:
+                                stdout.write(loc(y/2,x) + ' ')
                         me.pos[0] -= 1
                 elif ch == Key.DOWN_ARROW:
-                        #y,x = me.pos
-                        #if y%2:
-                        #        print loc(y,x) + ' '
+                        y,x = me.pos
+                        if y%2:
+                                stdout.write(loc(y/2,x) + ' ')
                         me.pos[0] += 1
                 elif ch == Key.LEFT_ARROW:
-                        #y,x = me.pos
-                        #print loc(y,x) + ' '
+                        y,x = me.pos
+                        stdout.write(loc(y/2,x) + ' ')
                         me.pos[1] -= 1
                 elif ch == Key.RIGHT_ARROW:
-                        #y,x = me.pos
-                        #print loc(y,x) + ' '
+                        y,x = me.pos
+                        stdout.write(loc(y/2,x) + ' ')
                         me.pos[1] += 1
                 elif ch == 'q':
                         break
