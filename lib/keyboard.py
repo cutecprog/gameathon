@@ -42,6 +42,11 @@ class Key:
         BR_CORNER   = '\xe2\x94\x98'
         TV_WORM     = '\xe2\x95\xb9'
         BV_WORM     = '\xe2\x95\xbb'
+        BL_WORM     = '\xe2\x94\x93'
+        BR_WORM     = '\xe2\x94\x8f'
+        TL_WORM     = '\xe2\x94\x9b'
+        TR_WORM     = '\xe2\x94\x97'
+        H_WORM      = '\xe2\x94\x81'
 
 class Cursor(object):
         """Hold a position one a terminal screen

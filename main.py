@@ -8,6 +8,7 @@ from os import system
 def main():
         system('setterm -cursor off')
         system('clear')
+        print Key.H_WORM + Key.BL_WORM + Key.BR_WORM
         print loc(20,20) + '\033[7m  \033[0m'
         me = Player([80,80])
         print me
@@ -18,9 +19,7 @@ def main():
                 elif ch == Key.DOWN_ARROW:
                         me.move_down()
                 elif ch == Key.LEFT_ARROW:
-                        y,x = me.pos
-                        stdout.write(loc(y/2,x) + ' ')
-                        me.pos[1] -= 1
+                        me.move_left()
                 elif ch == Key.RIGHT_ARROW:
                         y,x = me.pos
                         stdout.write(loc(y/2,x) + ' ')
@@ -41,10 +40,11 @@ class Player(object):
                         self.sym = Key.BV_WORM
         def __repr__(self):
                 y, x = self.pos
-                if y%2 == 0:
-                        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.TV_WORM
-                else:
-                        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
+                return '\033[%s;%sH' % (str(y/2), str(x)) + self.sym
+                #if y%2 == 0:
+                #        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.TV_WORM
+                #else:
+                #        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
         def move_up(self):
                 y, x = self.pos
                 if self.sym == Key.BV_WORM:
@@ -71,8 +71,16 @@ class Player(object):
                         self.sym = Key.TV_WORM
                 else:          # Bottom
                         self.sym = Key.BV_WORM
-        #def move_left(self):
-        #        if self.sym == K.BV_WORM
+        def move_left(self):
+                y, x = self.pos
+                if self.sym == Key.BV_WORM:
+                        self.sym = Key.BL_WORM
+                elif self.sym == Key.TV_WORM:
+                        self.sym = Key.TL_WORM
+                else:
+                        stdout.write(loc(y/2, x) + ' ')
+                        self.sym = Key.H_WORM
+                        self.pos[1] -= 1
 
 if __name__=='__main__':
         main()
