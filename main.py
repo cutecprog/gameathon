@@ -31,6 +31,7 @@ def main():
 class Player(object):
         def __init__(self, pos = [0,0]):
                 self.pos = pos
+                self.hp  = 8
                 y, x = self.pos
                 if y%2 == 0:
                         self.sym = Key.T_SQUARE
