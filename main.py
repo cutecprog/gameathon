@@ -21,9 +21,7 @@ def main():
                 elif ch == Key.LEFT_ARROW:
                         me.move_left()
                 elif ch == Key.RIGHT_ARROW:
-                        y,x = me.pos
-                        stdout.write(loc(y/2,x) + ' ')
-                        me.pos[1] += 1
+                        me.move_right()
                 elif ch == 'q':
                         break
                 print me
@@ -47,17 +45,13 @@ class Player(object):
                 #        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
         def move_up(self):
                 y, x = self.pos
-                if self.sym == Key.BV_WORM:
-                        self.sym = Key.TV_WORM
+                if y%2:
+                        self.sym = Key.T_SQUARE
                         self.pos[0] -= 1
-                elif self.sym == Key.TV_WORM:
+                else:
                         stdout.write(loc(y/2, x) + ' ')
-                        self.sym = Key.BV_WORM
+                        self.sym = Key.B_SQUARE
                         self.pos[0] -= 1
-                elif y%2 == 0: # Top
-                        self.sym = Key.TV_WORM
-                else:          # Bottom
-                        self.sym = Key.BV_WORM
         def move_down(self):
                 y, x = self.pos
                 if self.sym == Key.BV_WORM:
@@ -67,9 +61,9 @@ class Player(object):
                 elif self.sym == Key.TV_WORM:
                         self.sym = Key.BV_WORM
                         self.pos[0] += 1
-                elif y%2 == 0: # Top
-                        self.sym = Key.TV_WORM
-                else:          # Bottom
+                else:
+                        if y%2 == 0:
+                                self.pos[0] += 1
                         self.sym = Key.BV_WORM
         def move_left(self):
                 y, x = self.pos
@@ -81,6 +75,16 @@ class Player(object):
                         stdout.write(loc(y/2, x) + ' ')
                         self.sym = Key.H_WORM
                         self.pos[1] -= 1
+        def move_right(self):
+                y, x = self.pos
+                if self.sym == Key.BV_WORM:
+                        self.sym = Key.BR_WORM
+                elif self.sym == Key.TV_WORM:
+                        self.sym = Key.TR_WORM
+                else:
+                        stdout.write(loc(y/2, x) + ' ')
+                        self.sym = Key.H_WORM
+                        self.pos[1] += 1
 
 if __name__=='__main__':
         main()

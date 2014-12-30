@@ -47,6 +47,8 @@ class Key:
         TL_WORM     = '\xe2\x94\x9b'
         TR_WORM     = '\xe2\x94\x97'
         H_WORM      = '\xe2\x94\x81'
+        B_SQUARE    = '\xe2\x96\x85'
+        T_SQUARE    = '\033[7m\xe2\x96\x85\033[0m'
 
 class Cursor(object):
         """Hold a position one a terminal screen
