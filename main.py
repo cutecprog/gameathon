@@ -22,6 +22,8 @@ def main():
                         me.move_left()
                 elif ch == Key.RIGHT_ARROW:
                         me.move_right()
+                elif ch == ' ':
+                        me.hp -= 1
                 elif ch == 'q':
                         break
                 print me
@@ -45,6 +47,8 @@ class Player(object):
                 hp_bar = '\033[1;1H'
                 for n in range(0, self.hp):
                         hp_bar += Key.HEART + ' '
+                for n in range(self.hp, self.MAX_HP):
+                        hp_bar += Key.EMPTY_HEART + ' '
                 return hp_bar
         def move_up(self):
                 y, x = self.pos

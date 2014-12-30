@@ -50,6 +50,7 @@ class Key:
         B_SQUARE    = '\xe2\x96\x85'
         T_SQUARE    = '\033[7m\xe2\x96\x85\033[0m'
         HEART       = '\xe2\x99\xa5'
+        EMPTY_HEART = '\xe2\x99\xa1'
 
 class Cursor(object):
         """Hold a position one a terminal screen
