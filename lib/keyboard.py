@@ -12,7 +12,7 @@ def getch():
         old_settings = tcgetattr(fd)
         try:
                 setraw(fd)
-                ch = read(fd, 4)
+                ch = read(fd, 12)
         finally:
                 tcsetattr(fd, TCSADRAIN, old_settings)
         return ch

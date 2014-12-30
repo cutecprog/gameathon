@@ -14,14 +14,14 @@ def main():
         print me
         while True:
                 ch = getch()
-                print loc(1, 80) + repr(ch) + ' '*5
+                print loc(1, 80) + repr(ch) + ' '*13
                 if Key.UP_ARROW in ch:
                         me.move_up()
-                elif Key.DOWN_ARROW in ch:
+                if Key.DOWN_ARROW in ch:
                         me.move_down()
-                elif Key.LEFT_ARROW in ch:
+                if Key.LEFT_ARROW in ch:
                         me.move_left()
-                elif Key.RIGHT_ARROW in ch:
+                if Key.RIGHT_ARROW in ch:
                         me.move_right()
                 if ' ' in ch:
                         me.hp -= 1
