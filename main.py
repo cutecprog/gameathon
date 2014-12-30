@@ -40,9 +40,12 @@ class Player(object):
                         self.sym = Key.B_SQUARE
         def __repr__(self):
                 y, x = self.pos
-                return '\033[%s;%sH' % (str(y/2), str(x)) + self.sym
-        #def _show_hp(self):
-        #        for n in range(0, self.hp
+                return self._show_hp() + '\033[%s;%sH' % (str(y/2), str(x)) + self.sym
+        def _show_hp(self):
+                hp_bar = '\033[1;1H'
+                for n in range(0, self.hp):
+                        hp_bar += Key.HEART + ' '
+                return hp_bar
         def move_up(self):
                 y, x = self.pos
                 if y%2:

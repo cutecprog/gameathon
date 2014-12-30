@@ -49,6 +49,7 @@ class Key:
         H_WORM      = '\xe2\x94\x81'
         B_SQUARE    = '\xe2\x96\x85'
         T_SQUARE    = '\033[7m\xe2\x96\x85\033[0m'
+        HEART       = '\xe2\x99\xa5'
 
 class Cursor(object):
         """Hold a position one a terminal screen
