@@ -33,9 +33,9 @@ class Player(object):
                 self.pos = pos
                 y, x = self.pos
                 if y%2 == 0:
-                        self.sym = Key.TV_WORM
+                        self.sym = Key.T_SQUARE
                 else:
-                        self.sym = Key.BV_WORM
+                        self.sym = Key.B_SQUARE
         def __repr__(self):
                 y, x = self.pos
                 return '\033[%s;%sH' % (str(y/2), str(x)) + self.sym
@@ -54,37 +54,21 @@ class Player(object):
                         self.pos[0] -= 1
         def move_down(self):
                 y, x = self.pos
-                if self.sym == Key.BV_WORM:
-                        stdout.write(loc(y/2, x) + ' ')
-                        self.sym = Key.TV_WORM
-                        self.pos[0] += 1
-                elif self.sym == Key.TV_WORM:
-                        self.sym = Key.BV_WORM
+                if y%2 == 0:
+                        self.sym = Key.B_SQUARE
                         self.pos[0] += 1
                 else:
-                        if y%2 == 0:
-                                self.pos[0] += 1
-                        self.sym = Key.BV_WORM
+                        stdout.write(loc(y/2, x) + ' ')
+                        self.sym = Key.T_SQUARE
+                        self.pos[0] += 1
         def move_left(self):
                 y, x = self.pos
-                if self.sym == Key.BV_WORM:
-                        self.sym = Key.BL_WORM
-                elif self.sym == Key.TV_WORM:
-                        self.sym = Key.TL_WORM
-                else:
-                        stdout.write(loc(y/2, x) + ' ')
-                        self.sym = Key.H_WORM
-                        self.pos[1] -= 1
+                stdout.write(loc(y/2, x) + ' ')
+                self.pos[1] -= 1
         def move_right(self):
                 y, x = self.pos
-                if self.sym == Key.BV_WORM:
-                        self.sym = Key.BR_WORM
-                elif self.sym == Key.TV_WORM:
-                        self.sym = Key.TR_WORM
-                else:
-                        stdout.write(loc(y/2, x) + ' ')
-                        self.sym = Key.H_WORM
-                        self.pos[1] += 1
+                stdout.write(loc(y/2, x) + ' ')
+                self.pos[1] += 1
 
 if __name__=='__main__':
         main()
