@@ -29,9 +29,10 @@ def main():
         system('setterm -cursor on')
 
 class Player(object):
+        MAX_HP = 8
         def __init__(self, pos = [0,0]):
                 self.pos = pos
-                self.hp  = 8
+                self.hp  = self.MAX_HP
                 y, x = self.pos
                 if y%2 == 0:
                         self.sym = Key.T_SQUARE
@@ -40,10 +41,8 @@ class Player(object):
         def __repr__(self):
                 y, x = self.pos
                 return '\033[%s;%sH' % (str(y/2), str(x)) + self.sym
-                #if y%2 == 0:
-                #        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.TV_WORM
-                #else:
-                #        return '\033[%s;%sH' % (str(y/2), str(x)) + Key.BV_WORM
+        #def _show_hp(self):
+        #        for n in range(0, self.hp
         def move_up(self):
                 y, x = self.pos
                 if y%2:
