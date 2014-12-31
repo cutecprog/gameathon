@@ -47,8 +47,8 @@ class Key:
         TL_WORM     = '\xe2\x94\x9b'
         TR_WORM     = '\xe2\x94\x97'
         H_WORM      = '\xe2\x94\x81'
-        B_SQUARE    = '\033[7m  \033[0m'
-        T_SQUARE    = '\033[7m\xe2\x96\x85\xe2\x96\x85\033[0m'#\xe2\x96\x85\xe2\x96\x85'#\n\033[7m\xe2\x96\x85\xe2\x96\x85\033[0m'
+        T_SQUARE    = '\033[7m\xe2\x96\x85\033[0m' 
+        B_SQUARE    = '\xe2\x96\x85'
         HEART       = '\xe2\x99\xa5'
         EMPTY_HEART = '\xe2\x99\xa1'
 

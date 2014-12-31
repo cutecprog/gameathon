@@ -10,7 +10,7 @@ def main():
         system('clear')
         print Key.H_WORM + Key.BL_WORM + Key.BR_WORM
         print loc(20,20) + '\033[7m  \033[0m'
-        me = Player([80,80])
+        me = LiveCell([80,80])
         print me
         while True:
                 ch = getch()
@@ -31,7 +31,7 @@ def main():
         system('clear')
         system('setterm -cursor on')
 
-class Player(object):
+class LiveCell(object):
         MAX_HP = 8
         def __init__(self, pos = [0,0]):
                 self.pos = pos
