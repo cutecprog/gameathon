@@ -47,9 +47,9 @@ class LiveCell(object):
         def _show_hp(self):
                 hp_bar = '\033[1;1H'
                 for n in range(0, self.hp):
-                        hp_bar += Key.HEART + ' '
+                        hp_bar += Key.SQUARE + ' '
                 for n in range(self.hp, self.MAX_HP):
-                        hp_bar += Key.EMPTY_HEART + ' '
+                        hp_bar += Key.EMPTY_SQUARE + ' '
                 return hp_bar
         def move_up(self):
                 y, x = self.pos
