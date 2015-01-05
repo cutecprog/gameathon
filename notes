@@ -1,10 +1,14 @@
 Conway's game of life on a finite rolling square plane. A text file represents
 current generation as a character matrix the size of the game's plane. Player
-is a live cell that may move to contiguous dead cells in one generation. Moving
-into a contiuous live cell takes zero generations and increases players hp by
+is a live cell that may move to neighbor dead cells in one generation. Moving
+into neighbor live cell takes zero generations and increases players hp by
 one. When player moves off this cell it is dead. Player can lose one hp so that
 when they move off the cell will remain alive: this entire action takes zero
 generations. If current player cell becomes dead then player loses one hp then
 player can move taking the normal one generation and leaving the cell dead. If
 current player cell becomes alive then player gains one hp and moving off would
 leave the cell dead.
+
+Any live cell with fewer than two live neighbors dies. Any live cell with two,
+or three live neighbors lives. Any live cells with more than three live
+neighbors dies. Any dead cell with three live neighbors lives.
