@@ -1,46 +1,10 @@
-Drill simulation. Mechanics are controlling gas pedal, brake pedal, clutch and
-gear shift. Set analog values for brake and gas by binary search with two
-buttons. Start at 1/2 if one key press left then 1/4 else if one key press
-right then 3/4: LL 1/8, LR 3/8, RL 5/8, RR 7/8, LLL 1/16, etc. Gas pedal has a
-continuous random or complex varying by a factor of 1/8. Brake pedal is exact.
-Hold [shift] to disenage the clutch and release to enage it. For gear change to
-suceed, gas pedal must be between ideal ranges for the 1/8 of a second it takes
-the clutch to enage. Their is some tolarance to this but the clutch will take
-some damage; ideal range, and to a lesser degree tolarance, get smaller as the
-clutch approaches enagement.
-
-class KeyPress(object):
-        def __init__(self):
-                self.history = []
-                self.read = True
-        def listen(self):
-                Thread thingy
-        def unlisten(self):
-                self.listening = False
-        def _loop(self):
-                self.listening = True
-                while self.listening:
-                        ch = read(fd, 4)
-key_press = KeyPress()
-key_press.add_event('\033', pause)
-key_press.add_event('([a-z]|[A-Z])*', insert)
-
-class Cursor(object):
-        def __init__(self, pos, char):
-                self.pos  = pos
-                self.char = char
-        def __repr__(self):
-                return loc(self.y, self.x) + char)
-        def display_loop(self):
-                ...
-        def insert(self, str):
-                print loc(self.y, self.x) + str
-                self.y += len(str)
-
-def binary_search_int():
-
-(0,0,0,-1)
-(0,0,0,1)
-(0,0,-1,0)
-(0,0,1,0)
-(0,-1,0        
+Conway's game of life on a finite rolling square plane. A text file represents
+current generation as a character matrix the size of the game's plane. Player
+is a live cell that may move to contiguous dead cells in one generation. Moving
+into a contiuous live cell takes zero generations and increases players hp by
+one. When player moves off this cell it is dead. Player can lose one hp so that
+when they move off the cell will remain alive: this entire action takes zero
+generations. If current player cell is becomes alive then player loses one hp
+then player can move taking the normal one generation and leaving the cell
+dead. Alteratively the player can place a cell losing one additional hp and
+leaving the structure uneffected and taking zero generations.
