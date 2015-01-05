@@ -28,8 +28,11 @@ DataFile(file)
                 if sep:
                         self.write(self.read().replace(self.sep + value, ''))
 
-Plane
-        __init__(size, filename = `date +%s`)
+Session
+        __init__(size, filename = '')
+                self.world = DataFile(filename+'.world')
+                self.turn = DataFile(filename+'.turn')
+                self.id = `date +%s`
         __repr__()
                 self._load()
                 return self.world
