@@ -13,6 +13,21 @@ Any live cell with fewer than two live neighbors dies. Any live cell with two,
 or three live neighbors lives. Any live cells with more than three live
 neighbors dies. Any dead cell with three live neighbors lives.
 
+DataFile(file)
+        __init__(filename, sep = False)
+        __repr__
+                if sep:
+                        return self.read()
+                return self.read().split(self.sep)
+        __del__
+                self.f.close()
+        add(value)
+                if sep:
+                        self.write(self.sep + value)
+        remove(value)
+                if sep:
+                        self.write(self.read().replace(self.sep + value, ''))
+
 Plane
         __init__(size, filename = `date +%s`)
         __repr__()
