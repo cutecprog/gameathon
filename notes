@@ -12,3 +12,29 @@ leave the cell dead.
 Any live cell with fewer than two live neighbors dies. Any live cell with two,
 or three live neighbors lives. Any live cells with more than three live
 neighbors dies. Any dead cell with three live neighbors lives.
+
+Plane
+        __init__(size, filename = `date +%s`)
+        __repr__()
+                self._load()
+                return self.world
+        _load()
+                self.world = open(filename+'.world')
+        _step_turn()
+                f = open(filename+'.turn').split(',')
+                if len(f) == 1
+                        f[0] += 1
+        toggle_hold():
+                f = open(filename+'.turn')
+                if self.id in f
+                        f.remove(self.id)
+                else
+                        f.add(self.id)
+        is_turn()
+                turn = open(filename+'.turn')
+                if turn != self.turn
+                        self.turn = turn
+                        return True
+                return False
+        insert(pos, ch)
+                open(filename+'.world')[pos] = ch
