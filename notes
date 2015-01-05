@@ -15,12 +15,12 @@ neighbors dies. Any dead cell with three live neighbors lives.
 
 DataFile(file)
         __init__(filename, sep = False)
-        __repr__
-                if sep:
-                        return self.read()
-                return self.read().split(self.sep)
         __del__
                 self.f.close()
+        read
+                if sep:
+                        return super(DataFile, self).read()
+                return super(DataFile, self).read().split(self.sep)
         add(value)
                 if sep:
                         self.write(self.sep + value)
