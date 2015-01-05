@@ -16,43 +16,41 @@ neighbors dies. Any dead cell with three live neighbors lives.
 DataFile(file)
         __init__(filename, sep = False)
         __del__
-                self.f.close()
+                self.close()
         read
-                if sep:
-                        return super(DataFile, self).read()
-                return super(DataFile, self).read().split(self.sep)
+                if sep
+                        return super(DataFile, self).read().split(self.sep)
+                return super(DataFile, self).read()
         add(value)
-                if sep:
+                if sep
                         self.write(self.sep + value)
         remove(value)
-                if sep:
+                if sep
                         self.write(self.read().replace(self.sep + value, ''))
+        insert(pos, ch)
+                if sep
+                        return
+                data = self.read()
+                data[pos] = ch
+                self.write(data)
 
 Session
         __init__(size, filename = '')
                 self.world = DataFile(filename+'.world')
-                self.turn = DataFile(filename+'.turn')
+                self._turn = DataFile(filename+'.turn', ',')
+                self.session_turn = self.turn.read()[0]
                 self.id = `date +%s`
-        __repr__()
-                self._load()
-                return self.world
-        _load()
-                self.world = open(filename+'.world')
         _step_turn()
-                f = open(filename+'.turn').split(',')
-                if len(f) == 1
-                        f[0] += 1
+                if len(self._turn) == 1
+                        self._turn.write(int(self._turn.read()) + 1)
         toggle_hold():
-                f = open(filename+'.turn')
-                if self.id in f
-                        f.remove(self.id)
+                if self.id in self._turn.read()
+                        self._turn.remove(self.id)
                 else
-                        f.add(self.id)
+                        self._turn.add(self.id)
         is_turn()
-                turn = open(filename+'.turn')
-                if turn != self.turn
-                        self.turn = turn
+                current_turn = self._turn.read()[0]
+                if self.session_turn < current_turn
+                        self.session_turn = current_turn
                         return True
                 return False
-        insert(pos, ch)
-                open(filename+'.world')[pos] = ch
