@@ -1,5 +1,7 @@
+Tentatively hold a python game. Remove previous code when starting a new game.
+
 Rules:
-Make one game per week (due Sunday 5:59pm)
-Modify only current game and library
+Maintain an average of one week per game.
+Modify only current game (ie no branches)
 Commit often
 Write clean commit messages
