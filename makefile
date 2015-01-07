@@ -12,7 +12,7 @@ all: .git $(SOURCES) $(LIBRARY)
 $(SOURCES):
 	if [ -n "`git remote -v`" ]; then git remote rm origin; fi
 	git remote add origin $(ORIGIN)
-	git pull -u origin master
+	git pull origin master
 
 $(LIBRARY):
 	git clone $(LIB_ORIGIN)
