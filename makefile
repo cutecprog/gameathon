@@ -1,9 +1,11 @@
 ORIGIN=http://github.com/cutecprog/gameathon.git
 LIBRARY=lib
 LIB_ORIGIN=http://github.com/cutecprog/lib.git
-SOURCES=main.py
+LIB_HEAD=.lib_HEAD
+SOURCES=main.py $(LIB_HEAD)
 
 all: .git $(SOURCES) $(LIBRARY)
+	cd $(LIBRARY) && git rev-parse HEAD > ../$(LIB_HEAD); cd ..
 	echo 'test'
 
 .git:
@@ -16,3 +18,4 @@ $(SOURCES):
 
 $(LIBRARY):
 	git clone $(LIB_ORIGIN)
+	cd $(LIBRARY) && git checkout `cat ../$(LIB_HEAD)`; cd ..
