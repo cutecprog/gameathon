@@ -1,6 +1,6 @@
 """Hold game code in this file"""
 
-def main(): # Final
+def main(): # Post final
         from os import system
         from lib.keyboard import getch, Key
         from random import randint
@@ -8,6 +8,10 @@ def main(): # Final
         from lib.display import loc
         from string import whitespace
         system('setterm -cursor off')
+        system('touch turn.data tmp.data')
+        with open('tmp.data', 'r+') as f:
+                if len(f.read()) != 256:
+                        f.write(' '*256)
         print "Press a key of a visable character you like"
         sym = ' '
         while sym[0] in whitespace or '\033' in sym:
