@@ -78,3 +78,7 @@ ConwayGame(Session)
                                 elif neighbors == 3
                                         next_data[y][x] = '.'
                 self.world.write(next_data)
+
+Player(Session)
+        __init__
+        
