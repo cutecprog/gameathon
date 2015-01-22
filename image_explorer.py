@@ -1,6 +1,5 @@
 from PIL import Image
 from random import random
-from lib.keyboard import getch
 from lib.display import loc, GraphicVar
 from os import system
 from threading import Thread
@@ -42,6 +41,15 @@ def display_loop(pix, pos, view):
                 print_pixels(pix, pos, view)
 
 def explore(im, view):
+        from sys import stdin
+        from termios import tcgetattr, tcsetattr, TCSADRAIN
+        from tty import setraw
+        from os import read
+        fd = stdin.fileno()
+        old_settings = tcgetattr(fd)
+        setraw(fd)
+        system('setterm -cursor off')
+
         ch = ''
         pix = im.load()
         x_max, y_max = im.size
@@ -51,7 +59,7 @@ def explore(im, view):
         display_thread = Thread(target=display_loop, args=[pix,pos,view])
         display_thread.start()
         while ch != 'q':
-                ch=getch()
+                ch = read(fd, 4)
                 if ch in key_binds:
                         x, y = pos
                         y_offset, x_offset = key_binds[ch]
@@ -62,6 +70,8 @@ def explore(im, view):
                 #print_pixels(pix, pos, view)
         pos[0] = 0
         pos[1] = 0
+        tcsetattr(fd, TCSADRAIN, old_settings)
+        system('setterm -cursor on')
 
 im = Image.open('../tl1.png')
 system('clear')
