@@ -33,7 +33,7 @@ def print_pixels(pix, pos, view):
                 for c in range(-view, view+1):
                         if c==0 and r ==0:
                                 print '\033[41;96m'
-                        print loc(16+r,30+c) + foo(pix[x+c,y+r])
+                        print loc(16+r,30+c*2) + foo(pix[x+c,y+r])
                         print '\033[0m'        
 
 def display_loop(pix, pos, view):
