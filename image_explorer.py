@@ -33,7 +33,7 @@ def print_pixels(pix, pos, view):
                 for c in range(-view, view+1):
                         if c==0 and r ==0:
                                 print '\033[41;96m'
-                        print loc(16+r,30+c*2) + foo(pix[x+c,y+r])
+                        print loc(38+r,136+c*2) + foo(pix[x+c,y+r])
                         print '\033[0m'        
 
 def display_loop(pix, pos, view):
@@ -53,9 +53,13 @@ def explore(im, view):
         ch = ''
         pix = im.load()
         x_max, y_max = im.size
-        pos = [20,20]
+        pos = [view,view]
         key_binds = {'\x1b[D': (0, -1), '\x1b[A': (-1, 0),                    \
-                     '\x1b[C': (0, 1), '\x1b[B': (1,0)}
+                     '\x1b[C': (0, 1), '\x1b[B': (1,0),  \
+                     read(fd,1): (-view,0),  \
+                     read(fd,1): (0, -view), \
+                     read(fd,1): (view,0),   \
+                     read(fd,1): (0, view)}
         display_thread = Thread(target=display_loop, args=[pix,pos,view])
         display_thread.start()
         while ch != 'q':
@@ -74,5 +78,5 @@ def explore(im, view):
 
 im = Image.open('../tl1.png')
 system('clear')
-explore(im, 8)
+explore(im, 32)
 system('clear')
