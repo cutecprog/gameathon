@@ -62,10 +62,10 @@ def explore(im, view):
         pos = [view,view,view]
         key_binds = {Key.LEFT_ARROW: (0, -1, 0), Key.UP_ARROW: (-1, 0, 0),    \
                      Key.RIGHT_ARROW: (0, 1, 0), Key.DOWN_ARROW: (1,0, 0),    \
-                     read(fd,1): (-view, 0,     0),                           \
-                     read(fd,1): (0,     -view, 0),                           \
-                     read(fd,1): (view,  0,     0),                           \
-                     read(fd,1): (0,     view,  0),                           \
+                     read(fd,1): ('-',  0,   0),                              \
+                     read(fd,1): ( 0,  '-',  0),                              \
+                     read(fd,1): ('+',  0,   0),                              \
+                     read(fd,1): ( 0,  '+',  0),                              \
                      '[': (0,0,-1), ']': (0,0,1)}
         display_thread = Thread(target=display_loop, args=[pix,pos])
         display_thread.start()
@@ -74,9 +74,19 @@ def explore(im, view):
                 if ch in key_binds:
                         x, y, view = pos
                         y_offset, x_offset, view_offset = key_binds[ch]
+                        view = saturate(view+view_offset, 32)
+                        if type(x_offset) == str:
+                                if x_offset == '-':
+                                        x_offset = -view
+                                elif x_offset == '+':
+                                        x_offset = view
+                        if type(y_offset) == str:
+                                if y_offset == '-':
+                                        y_offset = -view
+                                elif y_offset == '+':
+                                        y_offset = view
                         x = saturate(x+x_offset, x_max-view, view)
                         y = saturate(y+y_offset, y_max-view, view)
-                        view = saturate(view+view_offset, 32)
                         if view_offset:
                                 system('clear')
                         pos[0] = x
