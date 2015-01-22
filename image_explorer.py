@@ -4,6 +4,7 @@ from lib.display import loc, GraphicVar
 from lib.keyboard import Key
 from os import system
 from threading import Thread
+from time import time
 
 def dither(x):
         n = int(x)
@@ -40,7 +41,12 @@ def print_pixels(pix, pos):
 def display_loop(pix, pos):
         while pos != [0,0,0]:
                 try:
+                        start = time()
+                        end = 0
                         print_pixels(pix, pos)
+                        while end-start < .083:
+                                end = time()
+                        print loc(1,1), int(1/(end-start)), 'fps '
                 except:
                         pass
 
@@ -85,8 +91,8 @@ def explore(im, view):
                                         y_offset = -view
                                 elif y_offset == '+':
                                         y_offset = view
-                        x = saturate(x+x_offset, x_max-view, view)
-                        y = saturate(y+y_offset, y_max-view, view)
+                        x = saturate(x+x_offset, x_max-view-1, view)
+                        y = saturate(y+y_offset, y_max-view-1, view)
                         if view_offset:
                                 system('clear')
                         pos[0] = x
