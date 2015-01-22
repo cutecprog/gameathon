@@ -1,7 +1,7 @@
 from PIL import Image
 from random import random
 from lib.keyboard import getch
-from lib.display import loc
+from lib.display import loc, GraphicVar
 from os import system
 
 def dither(x):
@@ -33,6 +33,10 @@ def explore(im, view):
         x, y = (20,20)
         key_binds = {'\x1b[D': (0, -1), '\x1b[A': (-1, 0),                    \
                      '\x1b[C': (0, 1), '\x1b[B': (1,0)}
+        bars = []
+        for r in range(-view, view+1):
+                for c in range(-(2*view), (2*view)+1)::
+                        bars.append( GraphicVar((r,c), foo, 1).start() )
         while ch != 'q':
                 ch=getch()
                 if ch in key_binds:
@@ -40,12 +44,12 @@ def explore(im, view):
                         x = saturate(x+x_offset, x_max-view, view)
                         y = saturate(y+y_offset, y_max-view, view)
                 print loc(1, 80), x,y, ' '*8
-                for r in range(-view, view+1):
+                '''for r in range(-view, view+1):
                         for c in range(-(2*view), (2*view)+1):
                                 if c==0 and r ==0:
                                        print '\033[41;96m'
                                 print loc(16+r,30+c) + foo(pix[x+c,y+r])
-                                print '\033[0m'
+                                print '\033[0m' '''
 
 im = Image.open('../tl1.png')
 system('clear')
