@@ -30,7 +30,7 @@ def print_pixels(pix, pos, view):
         print loc(1, 80), pos, ' '*8
         x, y = pos
         for r in range(-view, view+1):
-                for c in range(-(2*view), (2*view)+1):
+                for c in range(-view, view+1):
                         if c==0 and r ==0:
                                 print '\033[41;96m'
                         print loc(16+r,30+c) + foo(pix[x+c,y+r])
@@ -67,7 +67,6 @@ def explore(im, view):
                         y = saturate(y+y_offset, y_max-view, view)
                         pos[0] = x
                         pos[1] = y
-                #print_pixels(pix, pos, view)
         pos[0] = 0
         pos[1] = 0
         tcsetattr(fd, TCSADRAIN, old_settings)
