@@ -1,6 +1,7 @@
 from PIL import Image
 from random import random
 from lib.display import loc, GraphicVar
+from lib.keyboard import Key
 from os import system
 from threading import Thread
 
@@ -54,11 +55,11 @@ def explore(im, view):
         pix = im.load()
         x_max, y_max = im.size
         pos = [view,view]
-        key_binds = {'\x1b[D': (0, -1), '\x1b[A': (-1, 0),                    \
-                     '\x1b[C': (0, 1), '\x1b[B': (1,0),  \
-                     read(fd,1): (-view,0),  \
-                     read(fd,1): (0, -view), \
-                     read(fd,1): (view,0),   \
+        key_binds = {Key.LEFT_ARROW: (0, -1), Key.UP_ARROW: (-1, 0),          \
+                     Key.RIGHT_ARROW: (0, 1), Key.DOWN_ARROW: (1,0),          \
+                     read(fd,1): (-view,0),                                   \
+                     read(fd,1): (0, -view),                                  \
+                     read(fd,1): (view,0),                                    \
                      read(fd,1): (0, view)}
         display_thread = Thread(target=display_loop, args=[pix,pos,view])
         display_thread.start()
