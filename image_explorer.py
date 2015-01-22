@@ -35,8 +35,8 @@ def explore(im, view):
                      '\x1b[C': (0, 1), '\x1b[B': (1,0)}
         bars = []
         for r in range(-view, view+1):
-                for c in range(-(2*view), (2*view)+1)::
-                        bars.append( GraphicVar((r,c), foo, 1).start() )
+                for c in range(-(2*view), (2*view)+1):
+                        bars.append( GraphicVar((r,c), foo, 1) )
         while ch != 'q':
                 ch=getch()
                 if ch in key_binds:
