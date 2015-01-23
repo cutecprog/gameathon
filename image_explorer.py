@@ -5,6 +5,7 @@ from lib.keyboard import Key
 from os import system
 from threading import Thread
 from time import time
+from sys import argv
 
 def dither(x):
         n = int(x)
@@ -35,7 +36,7 @@ def print_pixels(pix, pos):
                 for c in range(-view, view+1):
                         if c==0 and r ==0:
                                 print '\033[41;96m'
-                        print loc(38+r,136+c*2) + foo(pix[x+c,y+r])
+                        print loc(34+r,68+c*2) + foo(pix[x+c,y+r])
                         print '\033[0m'        
 
 def display_loop(pix, pos):
@@ -65,6 +66,7 @@ def explore(im, view):
         ch = ''
         pix = im.load()
         x_max, y_max = im.size
+        view_max = 32
         pos = [view,view,view]
         key_binds = {Key.LEFT_ARROW: (0, -1, 0), Key.UP_ARROW: (-1, 0, 0),    \
                      Key.RIGHT_ARROW: (0, 1, 0), Key.DOWN_ARROW: (1,0, 0),    \
@@ -80,7 +82,7 @@ def explore(im, view):
                 if ch in key_binds:
                         x, y, view = pos
                         y_offset, x_offset, view_offset = key_binds[ch]
-                        view = saturate(view+view_offset, 32)
+                        view = saturate(view+view_offset, view_max)
                         if type(x_offset) == str:
                                 if x_offset == '-':
                                         x_offset = -view
@@ -93,7 +95,7 @@ def explore(im, view):
                                         y_offset = view
                         x = saturate(x+x_offset, x_max-view-1, view)
                         y = saturate(y+y_offset, y_max-view-1, view)
-                        if view_offset:
+                        if view_offset < 0:
                                 system('clear')
                         pos[0] = x
                         pos[1] = y
